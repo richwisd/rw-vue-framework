@@ -1,0 +1,150 @@
+{
+  "name": "rw-vue-framework",
+  "version": "1.0.11",
+  "description": "A Component Library for Vue 3",
+  "keywords": [
+    "rw-vue-framework",
+    "element",
+    "component library",
+    "ui framework",
+    "ui",
+    "vue"
+  ],
+  "homepage": "https://www.richwisd.com/",
+  "bugs": {
+    "url": "https://www.richwisd.com/"
+  },
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs",
+      "require": "./lib/index.js"
+    },
+    "./controls": {
+      "types": [
+        "./es/controls/index.d.ts",
+        "./es/control.d.ts"
+      ],
+      "import": "./es/packages/controls/index.mjs",
+      "require": "./lib/packages/controls/index.js"
+    },
+    "./controls/*": {
+      "types": [
+        "./es/controls/*/index.d.ts",
+        "./es/controls/*.d.ts"
+      ],
+      "import": "./es/packages/controls/*/index.mjs",
+      "require": "./lib/packages/controls/*/index.js"
+    },
+    "./pages": {
+      "types": [
+        "./es/pages/index.d.ts",
+        "./es/page.d.ts"
+      ],
+      "import": "./es/packages/pages/index.mjs",
+      "require": "./lib/packages/pages/index.js"
+    },
+    "./pages/*": {
+      "types": [
+        "./es/pages/*/index.d.ts",
+        "./es/pages/*.d.ts"
+      ],
+      "import": "./es/packages/pages/*/index.mjs",
+      "require": "./lib/packages/pages/*/index.js"
+    },
+    "./global": {
+      "types": "./global.d.ts"
+    },
+    "./es": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs"
+    },
+    "./lib": {
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js"
+    },
+    "./es/*.mjs": {
+      "types": "./es/*.d.ts",
+      "import": "./es/*.mjs"
+    },
+    "./es/*": {
+      "types": [
+        "./es/*.d.ts",
+        "./es/*/index.d.ts"
+      ],
+      "import": "./es/*.mjs"
+    },
+    "./lib/*.js": {
+      "types": "./lib/*.d.ts",
+      "require": "./lib/*.js"
+    },
+    "./lib/*": {
+      "types": [
+        "./lib/*.d.ts",
+        "./lib/*/index.d.ts"
+      ],
+      "require": "./lib/*.js"
+    },
+    "./*": "./*"
+  },
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richwisd/rw-vue-framework.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "style": "dist/index.css",
+  "sideEffects": [
+    "dist/*",
+    "theme-chalk/**/*.css",
+    "theme-chalk/src/**/*.scss",
+    "es/controls/*/style/*",
+    "lib/controls/*/style/*"
+  ],
+  "peerDependencies": {
+    "vue": "^3.5.13",
+    "pinia": "^3.0.4",
+    "pinia-plugin-persistedstate": "^4.7.0"
+  },
+  "dependencies": {
+    "@ctrl/tinycolor": "^3.6.1",
+    "@element-plus/icons-vue": "^2.3.2",
+    "@floating-ui/dom": "^1.7.4",
+    "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7",
+    "@types/lodash": "^4.17.20",
+    "@types/lodash-es": "^4.17.12",
+    "@vueuse/core": "^9.13.0",
+    "async-validator": "^4.2.5",
+    "dayjs": "^1.11.18",
+    "escape-html": "^1.0.3",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "lodash-unified": "^1.0.3",
+    "memoize-one": "^6.0.0",
+    "normalize-wheel-es": "^1.2.0",
+    "element-plus": "^2.13.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "csstype": "^2.6.21",
+    "vue": "^3.5.22",
+    "vue-router": "^4.5.1"
+  },
+  "vetur": {
+    "tags": "tags.json",
+    "attributes": "attributes.json"
+  },
+  "web-types": "web-types.json",
+  "browserslist": [
+    "> 1%",
+    "not ie 11",
+    "not op_mini all"
+  ]
+}

@@ -1,0 +1,156 @@
+@charset "utf-8";
+ @use './theme.scss' as *;
+//@forward './theme.scss';
+// @use './element-variables.scss' as *;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+  transition: all .2s ease-in-out;
+}
+
+.el-tooltip__trigger:first-child:focus-visible {
+  outline: unset;
+}
+.form-wrapper{
+  background: var(--mainBgColor);
+}
+.text-center{
+  text-align: center;
+}
+.content-wrapper{
+  background: var(--mainBgColor);
+  height: var(--mainBgHeight);
+}
+.dialog-wrapper{
+  width: 50vh;
+  height: 50vh;
+  position: fixed;
+  z-index: 2;
+  top: 10vh;
+  left: 30vh;
+  background: #eee;
+  padding: 10px;
+}
+.menuSelect {
+  background: $sidebarThemeActive;
+}
+.wrapper{
+  background: var(--mainBgColor);
+  height: var(--mainBgHeight);
+  border-radius: 4px;
+}
+.col-wrapper{
+  padding: 12px;
+}
+.btn-wrapper{
+  padding: 0 12px;
+}
+.no-btn-wrapper{
+  margin: 0 12px;
+  overflow-y: auto;
+}
+.main-wrapper {
+  // background: var(--main-wrapper-bg); //暂不要
+  width: 100%;
+  height: calc(100vh - 50px);
+  //padding: 10px;
+  padding: 0;
+  overflow-y: auto;
+}
+.tabs_wrapper {
+  background-color: var(--el-fill-color-light);
+  padding: 0;
+  height: 34px;
+  display: flex;
+  width: 100%;
+}
+//  header
+.header_wrapper {
+    padding: 0 !important;
+    // height: auto !important;
+    height: 50px;
+    display: inline-flex;
+    background-color: var(--el-fill-color-light);
+
+    // .bar-wrapper {
+    //     background-color: var(--el-fill-color-light);
+    //     display: flex;
+    .logo_wrapper {
+
+        flex-shrink: 0;
+        >img {
+            height: 50px;
+            display: block;
+        }
+    }
+
+    .header_main_wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        // background-color: var(--el-fill-color-light);这个瑞 应该用不到了，如果后面有问题，可以回滚
+
+        .flex-col-align {
+            display: flex;
+            align-items: center;
+            flex: 1;
+
+            .icon-base {
+                color: var(--el-text-color-secondary);
+            }
+        }
+
+        .admin_rightUl {
+            display: flex;
+            text-align: right;
+            align-items: center;
+            >li {
+                display: flex;
+                align-items: center;
+                // position: relative;
+                // display: block;
+                cursor: pointer;
+                padding: 0 10px;
+                font-size: 14px;
+            }
+        }
+
+    }
+
+    // }
+}
+
+.el-tabs__content {
+    padding: 0 !important;
+}
+
+.el-tabs--border-card>.el-tabs__header {
+    border-bottom: none;
+
+}

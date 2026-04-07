@@ -1,0 +1,5 @@
+export const PKG_PREFIX = '@rw-vue-framework'
+export const PKG_NAME = 'rw-vue-framework'
+export const PKG_CAMELCASE_NAME = 'RwFramework'
+export const PKG_CAMELCASE_LOCAL_NAME = 'RwFrameworkLocale'
+export const PKG_BRAND_NAME = 'Rw Framework'

@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es2020",
+    "module": "esnext",
+    "baseUrl": ".",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "rootDir": ".",
+    "types": ["vue"],
+    "paths": {
+      "@rw-element-admin/*": ["packages/*"],
+      "rw-element-admin": ["packages/rw-element-admin"]
+    },
+    "preserveSymlinks": true,
+    "noUnusedLocals": false,          //不检查未使用的变量
+    "noUnusedParameters": false,      //不检查未使用的参数
+    "skipLibCheck": true,             //略无法解析的模块
+    "noImplicitAny": false           //不检查第三方库类型定义文件
+  },
+  "ts-node": {
+    "ignoreDiagnostics": [2304, 2339, 2352, 4058, 4023]
+  }
+}

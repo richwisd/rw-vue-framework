@@ -1,0 +1,65 @@
+{
+  "folders": [
+    {
+      "name": "@rw-vue-framework/config",
+      "path": "packages/config"
+    },
+    {
+      "name": "@rw-vue-framework/constants",
+      "path": "packages/constants"
+    },
+    {
+      "name": "@rw-vue-framework/controls",
+      "path": "packages/controls"
+    },
+    {
+      "name": "@rw-vue-framework/directives",
+      "path": "packages/directives"
+    },
+    {
+      "name": "@rw-vue-framework/hooks",
+      "path": "packages/hooks"
+    },
+    {
+      "name": "@rw-vue-framework/layout",
+      "path": "packages/layout"
+    },
+    {
+      "name": "@rw-vue-framework/locale",
+      "path": "packages/locale"
+    },
+    {
+      "name": "@rw-vue-framework/router",
+      "path": "packages/router"
+    },
+    {
+      "name": "@rw-vue-framework/rw-vue-framework",
+      "path": "packages/rw-vue-framework"
+    },
+    {
+      "name": "@rw-vue-framework/stores",
+      "path": "packages/stores"
+    },
+    {   
+      "name": "@rw-vue-framework/theme-chalk",
+      "path": "packages/theme-chalk"
+    },
+    {
+      "name": "@rw-vue-framework/utils",
+      "path": "packages/utils"
+    },
+    {
+      "name": "@rw-vue-framework/build",
+      "path": "internal/build"
+    },
+    {
+      "name": "@rw-vue-framework/build-utils",
+      "path": "internal/build-utils"
+    },
+    {
+      "name": "@rw-vue-framework/eslint-config",
+      "path": "internal/eslint-config"
+    }
+
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "types": ["node"],
+    "lib": ["es2021"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@vitejs/plugin-vue": ["./node_modules/@vitejs/plugin-vue"],
+      "@vitejs/plugin-vue-jsx": ["./node_modules/@vitejs/plugin-vue-jsx"]
+    },
+    "ignoreDeprecations": "5.0"
+  },
+  "ts-node": {
+    "ignoreDiagnostics": [2307, 2588]
+  },
+  "include": [
+    "src/**/*",
+    "gulpfile.ts"
+  ]
+}
