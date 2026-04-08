@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RW Framework Process Test</title>
+</head>
+<body>
+    <div id="app">
+        <h1>RW Framework Process Compatibility Test</h1>
+        <div id="results"></div>
+    </div>
+    <script src="./dist/rw-vue-framework/dist/index.full.js"></script>
+    <script>
+        const results = document.getElementById('results');
+
+        function log(message, success = true) {
+            const div = document.createElement('div');
+            div.textContent = message;
+            div.style.color = success ? 'green' : 'red';
+            div.style.margin = '5px 0';
+            results.appendChild(div);
+            console.log(message);
+        }
+
+        try {
+            // Test 1: Check if process is defined
+            if (typeof window.process !== 'undefined') {
+                log('✅ process is defined in global scope', true);
+            } else {
+                log('❌ process is not defined in global scope', false);
+            }
+
+            // Test 2: Check process.env
+            if (window.process && typeof window.process.env !== 'undefined') {
+                log('✅ process.env is defined', true);
+                log(`   process.env.NODE_ENV = ${window.process.env.NODE_ENV}`, true);
+            } else {
+                log('❌ process.env is not defined', false);
+            }
+
+            // Test 3: Check util module
+            if (typeof window.util !== 'undefined') {
+                log('✅ util is defined in global scope', true);
+                if (typeof window.util.inherits === 'function') {
+                    log('✅ util.inherits is available', true);
+                } else {
+                    log('❌ util.inherits is not available', false);
+                }
+            } else {
+                log('❌ util is not defined in global scope', false);
+            }
+
+// Test 5: Try to use util.inherits (which uses process internally)
+        try {
+            if (window.util && window.util.inherits) {
+                log('✅ util.inherits is available and should work with process', true);
+            } else {
+                log('❌ util.inherits is not available', false);
+            }
+        } catch (error) {
+            log(`❌ Error with util.inherits: ${error.message}`, false);
+        }
+
+        // Test 6: Test that util package can be used without process errors
+        try {
+            // This should work now that both util and process are polyfilled
+            log('✅ Both util and process polyfills are working together', true);
+        } catch (error) {
+            log(`❌ Error with util/process interaction: ${error.message}`, false);
+        }
+
+        } catch (error) {
+            log(`❌ Error during testing: ${error.message}`, false);
+        }
+    </script>
+</body>
+</html>

@@ -16,8 +16,8 @@
     "rootDir": ".",
     "types": ["vue"],
     "paths": {
-      "@rw-element-admin/*": ["packages/*"],
-      "rw-element-admin": ["packages/rw-element-admin"]
+      "@rw-vue-framework/*": ["packages/*"],
+      "rw-vue-framework": ["packages/rw-vue-framework"]
     },
     "preserveSymlinks": true,
     "noUnusedLocals": false,          //不检查未使用的变量

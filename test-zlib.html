@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zlib Test</title>
+</head>
+<body>
+    <h1>Testing Zlib Polyfill</h1>
+    <div id="output"></div>
+
+    <script src="./dist/index.full.js"></script>
+    <script>
+        // Test if zlib constants are available
+        const output = document.getElementById('output');
+
+        try {
+            // Check if zlib is available
+            if (typeof zlib !== 'undefined') {
+                output.innerHTML += '<p>✓ zlib is available</p>';
+                if (zlib.constants && zlib.constants.Z_SYNC_FLUSH) {
+                    output.innerHTML += '<p>✓ zlib.constants.Z_SYNC_FLUSH is available: ' + zlib.constants.Z_SYNC_FLUSH + '</p>';
+                } else {
+                    output.innerHTML += '<p>✗ zlib.constants.Z_SYNC_FLUSH is not available</p>';
+                    if (zlib.constants) {
+                        output.innerHTML += '<p>zlib.constants exists but Z_SYNC_FLUSH is missing</p>';
+                    } else {
+                        output.innerHTML += '<p>zlib.constants does not exist</p>';
+                    }
+                }
+            } else {
+                output.innerHTML += '<p>✗ zlib is not available</p>';
+            }
+
+            // Test direct access to zlib.constants.Z_SYNC_FLUSH
+            try {
+                const value = zlib.constants.Z_SYNC_FLUSH;
+                output.innerHTML += '<p>✓ Direct access to zlib.constants.Z_SYNC_FLUSH works: ' + value + '</p>';
+            } catch (e) {
+                output.innerHTML += '<p>✗ Direct access to zlib.constants.Z_SYNC_FLUSH failed: ' + e.message + '</p>';
+            }
+
+        } catch (error) {
+            output.innerHTML += '<p>✗ Error: ' + error.message + '</p>';
+        }
+    </script>
+</body>
+</html>

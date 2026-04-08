@@ -11,8 +11,8 @@
     "internal/**/*.json",
     "scripts/**/*",
     "packages/theme-chalk/*",
-    "packages/rw-element-admin/version.ts",
-    "packages/rw-element-admin/package.json"
+    "packages/rw-vue-framework/version.ts",
+    "packages/rw-vue-framework/package.json"
   ],
   "exclude": ["**/__tests__/**", "**/tests/**", "**/dist"]
 }

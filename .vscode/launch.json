@@ -1,42 +1,27 @@
 {
-  "$schema": "https://json.schemastore.org/launchsettings.json",
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "chrome",
-      "name": "vben admin playground dev",
+      "name": "Launch Chrome",
       "request": "launch",
-      "url": "http://localhost:5555",
-      "env": { "NODE_ENV": "development" },
-      "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/playground"
+      "type": "chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
     },
     {
-      "type": "chrome",
-      "name": "vben admin antd dev",
+      "name": "Launch Edge",
       "request": "launch",
-      "url": "http://localhost:5666",
-      "env": { "NODE_ENV": "development" },
-      "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/apps/web-antd"
+      "type": "msedge",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
     },
     {
-      "type": "chrome",
-      "name": "vben admin ele dev",
+      "name": "Run and debug",
+      "type": "node",
       "request": "launch",
-      "url": "http://localhost:5777",
-      "env": { "NODE_ENV": "development" },
-      "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/apps/web-ele"
-    },
-    {
-      "type": "chrome",
-      "name": "vben admin naive dev",
-      "request": "launch",
-      "url": "http://localhost:5888",
-      "env": { "NODE_ENV": "development" },
-      "sourceMaps": true,
-      "webRoot": "${workspaceFolder}/apps/web-naive"
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "dev"]
     }
   ]
 }
