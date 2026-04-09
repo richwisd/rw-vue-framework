@@ -1,6 +1,6 @@
 import { PKG_NAME, PKG_PREFIX } from '@rw-vue-framework/build-constants'
 
-import type { Plugin } from 'rollup'
+import type { Plugin } from 'rolldown'
 
 export function RwFrameworkAlias(): Plugin {
   const themeChalk = 'theme-chalk'
@@ -8,13 +8,17 @@ export function RwFrameworkAlias(): Plugin {
   const bundleThemeChalk = `${PKG_NAME}/${themeChalk}` as const
 
   return {
-    name: 'rw-vue-framework-alias-plugin',
-    resolveId(id) {
-      if (!id.startsWith(sourceThemeChalk)) return
-      return {
-        id: id.replace(new RegExp(sourceThemeChalk, 'g'), bundleThemeChalk),
-        external: 'absolute',
-      }
+    name: 'element-plus-alias-plugin',
+    resolveId: {
+      filter: {
+        id: /^@element-plus\/theme-chalk/,
+      },
+      handler(id) {
+        return {
+          id: id.replaceAll(sourceThemeChalk, bundleThemeChalk),
+          external: 'absolute',
+        }
+      },
     },
   }
 }

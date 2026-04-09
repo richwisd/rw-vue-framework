@@ -2,10 +2,10 @@ import path from 'path'
 import { PKG_NAME } from '@rw-vue-framework/build-constants'
 import { epOutput } from '@rw-vue-framework/build-utils'
 
-import type { ModuleFormat } from 'rollup'
+import type { ModuleFormat } from 'rolldown'
 
 export const modules = ['esm', 'cjs'] as const
-export type Module = typeof modules[number]
+export type Module = (typeof modules)[number]
 export interface BuildInfo {
   module: 'ESNext' | 'CommonJS'
   format: ModuleFormat
@@ -13,12 +13,12 @@ export interface BuildInfo {
   output: {
     /** e.g: `es` */
     name: string
-    /** e.g: `dist/rw-vue-framework/es` */
+    /** e.g: `dist/element-plus/es` */
     path: string
   }
 
   bundle: {
-    /** e.g: `rw-vue-framework/es` */
+    /** e.g: `element-plus/es` */
     path: string
   }
 }
@@ -56,4 +56,4 @@ export const buildConfigEntries = Object.entries(
 export type BuildConfig = typeof buildConfig
 export type BuildConfigEntries = [Module, BuildInfo][]
 
-export const target = 'es2020'
+export const target = 'es2018'
