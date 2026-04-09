@@ -47,6 +47,7 @@ async function buildFullEntry(minify: boolean) {
     SvgPlugin(),
     replacePlugin({
       'process.env.NODE_ENV': '"production"',
+      'import.meta.env.VITE_PRIVATE_KEY': JSON.stringify(process.env.VITE_PRIVATE_KEY || ''),
     }),
     SupplyValidator()
   ]
