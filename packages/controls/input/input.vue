@@ -521,7 +521,7 @@ defineExpose(instance)
 }
 
 // 添加全局样式来提高dialog的z-index
-:deep(.muti-lang-dialog) {
+::deep(.muti-lang-dialog) {
   .el-dialog__wrapper {
     z-index: 2050 !important;
   }

@@ -465,8 +465,8 @@ export default defineConfig([
                 '@element-plus/element-plus',
                 '@element-plus/theme-chalk',
                 '@element-plus/build',
-                '@element-plus/build-constants',
-                '@element-plus/build-utils',
+                '@rw-vue-framework/build-constants',
+                '@rw-vue-framework/build-utils',
                 '@element-plus/eslint-config',
                 '@element-plus/metadata',
               ],
@@ -522,8 +522,8 @@ export default defineConfig([
             {
               group: [
                 '@element-plus/build',
-                '@element-plus/build-constants',
-                '@element-plus/build-utils',
+                '@rw-vue-framework/build-constants',
+                '@rw-vue-framework/build-utils',
                 '@element-plus/eslint-config',
                 '@element-plus/metadata',
               ],
