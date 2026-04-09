@@ -1,16 +1,16 @@
 declare module 'vue' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
-    RwText: typeof import('rw-element-admin')['RwText']
-    RwButton: typeof import('rw-element-admin')['RwButton']
-    RwDivider: typeof import('rw-element-admin')['RwDivider']
-    RwPopConfirm: typeof import('rw-element-admin')['RwPopConfirm']
-    RwDropdown: typeof import('rw-element-admin')['RwDropdown']
-    RwButtonGroup: typeof import('rw-element-admin')['RwButtonGroup']
-    RwBetween: typeof import('rw-element-admin')['RwBetween']
-    RwInput: typeof import('rw-element-admin')['RwInput']
-    RwInputNumber: typeof import('rw-element-admin')['RwInputNumber']
-    RwCard: typeof import('rw-element-admin')['RwCard']
+    RwText: typeof import('rw-vue-framework')['RwText']
+    RwButton: typeof import('rw-vue-framework')['RwButton']
+    RwDivider: typeof import('rw-vue-framework')['RwDivider']
+    RwPopConfirm: typeof import('rw-vue-framework')['RwPopConfirm']
+    RwDropdown: typeof import('rw-vue-framework')['RwDropdown']
+    RwButtonGroup: typeof import('rw-vue-framework')['RwButtonGroup']
+    RwBetween: typeof import('rw-vue-framework')['RwBetween']
+    RwInput: typeof import('rw-vue-framework')['RwInput']
+    RwInputNumber: typeof import('rw-vue-framework')['RwInputNumber']
+    RwCard: typeof import('rw-vue-framework')['RwCard']
   }
 
   interface ComponentCustomProperties {}

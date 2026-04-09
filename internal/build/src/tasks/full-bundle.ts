@@ -40,20 +40,29 @@ async function buildFullEntry(minify: boolean) {
           hoistStatic: true,
         },
       },
+      // @ts-ignore
+      style: false,
     }) as Plugin,
     vueJsx() as Plugin,
     SvgPlugin(),
     replacePlugin({
       'process.env.NODE_ENV': '"production"',
     }),
-    SupplyValidator(),
+    SupplyValidator()
   ]
 
   const bundle = await rolldown({
-    input: path.resolve(epRoot, 'index.ts'),
+    input: 'index.ts',
+    cwd: epRoot,
     plugins,
     external: generateExternal({ full: true }),
     treeshake: true,
+    moduleTypes: {
+      '.css': 'js',
+      '.scss': 'js',
+      '.sass': 'js',
+      '.less': 'js',
+    },
   })
   await writeBundles(bundle, [
     {
@@ -67,6 +76,22 @@ async function buildFullEntry(minify: boolean) {
       name: PKG_CAMELCASE_NAME,
       globals: {
         vue: 'Vue',
+        util: 'util',
+        stream: 'stream',
+        path: 'path',
+        http: 'http',
+        https: 'https',
+        url: 'url',
+        fs: 'fs',
+        crypto: 'crypto',
+        assert: 'assert',
+        tty: 'tty',
+        os: 'os',
+        zlib: 'zlib',
+        events: 'events',
+        'follow-redirects': 'follow-redirects',
+        'http2': 'http2',
+        'process': 'process',
       },
       sourcemap: minify,
       banner,
@@ -97,7 +122,14 @@ async function buildFullLocale(minify: boolean) {
       const name = upperFirst(camelCase(filename))
 
       const bundle = await rolldown({
-        input: file,
+        input: path.relative(localeRoot, file),
+        cwd: localeRoot,
+        moduleTypes: {
+        '.css': 'js',
+        '.scss': 'js',
+        '.sass': 'js',
+        '.less': 'js',
+      },
       })
       await writeBundles(bundle, [
         {

@@ -36,7 +36,7 @@ const copyFiles = () =>
   ])
 
 const copyTypesDefinitions = () => {
-  const src = path.resolve(buildOutput, 'types')
+  const src = path.resolve(buildOutput, 'types', 'packages')
   const copyTypes = (module: Module) => {
     return execCommand(
       () => cp(src, buildConfig[module].output.path, { recursive: true }),
@@ -49,10 +49,10 @@ const copyTypesDefinitions = () => {
 
 const copyFullStyle = async () => {
   await mkdir(path.resolve(epOutput, 'dist'), { recursive: true })
-  await copyFile(
-    path.resolve(epOutput, 'theme-chalk/index.css'),
-    path.resolve(epOutput, 'dist/index.css')
-  )
+  // await copyFile(
+  //   path.resolve(epOutput, 'theme-chalk/index.css'),
+  //   path.resolve(epOutput, 'dist/index.css')
+  // )
 }
 
 const buildStyle = async () => {

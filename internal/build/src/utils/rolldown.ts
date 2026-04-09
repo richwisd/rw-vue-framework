@@ -11,6 +11,11 @@ export const generateExternal = (options: { full: boolean }) => {
       return true
     }
 
+    // 排除 CSS 文件
+    if (id.endsWith('.css')) {
+      return true
+    }
+
     const packages: string[] = [...peerDependencies]
     if (!options.full) {
       packages.push('@vue', ...dependencies)

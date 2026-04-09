@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import type { vShow } from 'vue'
-import type { INSTALLED_KEY } from '@rw-element-admin/constants'
+import type { INSTALLED_KEY } from '@rw-vue-framework/constants'
 
 declare global {
   const process: {

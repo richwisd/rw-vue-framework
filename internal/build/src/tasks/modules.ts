@@ -50,6 +50,12 @@ async function buildModulesComponents() {
     plugins,
     external: generateExternal({ full: false }),
     treeshake: { moduleSideEffects: false },
+    moduleTypes: {
+      '.css': 'js',
+      '.scss': 'js',
+      '.sass': 'js',
+      '.less': 'js',
+    },
   })
 
   await writeBundles(
@@ -70,7 +76,7 @@ async function buildModulesComponents() {
 
 async function buildModulesStyles() {
   const input = excludeFiles(
-    await glob('**/style/(index|css).{js,ts,vue}', {
+    await glob('**/style/index.ts', {
       cwd: pkgRoot,
       absolute: true,
       onlyFiles: true,
@@ -87,6 +93,12 @@ async function buildModulesStyles() {
     input,
     plugins,
     treeshake: false,
+    moduleTypes: {
+      '.css': 'js',
+      '.scss': 'js',
+      '.sass': 'js',
+      '.less': 'js',
+    },
   })
 
   await writeBundles(

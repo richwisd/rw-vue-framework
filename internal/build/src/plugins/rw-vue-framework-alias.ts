@@ -8,10 +8,10 @@ export function RwFrameworkAlias(): Plugin {
   const bundleThemeChalk = `${PKG_NAME}/${themeChalk}` as const
 
   return {
-    name: 'element-plus-alias-plugin',
+    name: 'rw-vue-framework-alias-plugin',
     resolveId: {
       filter: {
-        id: /^@element-plus\/theme-chalk/,
+        id: /^@rw-vue-framework\/theme-chalk/,
       },
       handler(id) {
         return {
