@@ -128,7 +128,7 @@ const loadFileList = async (): Promise<void> => {
       page: pagination.page,
     }
 
-    const response = await http.post('?p=Files&a=getFileList', searchParams)
+    const response = await http.post(config?.apiBaseUrl + '?p=Files&a=getFileList', searchParams)
 
     if (response.status === 0) {
       rwFileList.value = response.data.rows || []

@@ -7,8 +7,7 @@ import {
   type OptionT,
   type UploadUserFile,
   initFile,
-  isEmpty,
-  setBaseUrl
+  isEmpty
 } from './upload'
 import { Plus } from '@element-plus/icons-vue'
 import { useFormValue } from '../../hooks'
@@ -20,14 +19,6 @@ defineOptions({ name: 'RwUploadNew' })
 import { inject } from 'vue'
 
 const config = inject('frameworkConfig') as FrameworkOptions
-
-onMounted(() => {
-  if (config?.apiBaseUrl) {
-    setBaseUrl(config.apiBaseUrl)
-  } else {
-    console.warn('No apiBaseUrl found in frameworkConfig, using default "/"')
-  }
-})
 
 console.log('upload:Upload component received config:', config)
 
@@ -96,7 +87,7 @@ const initializeFileList = async (value: string | number | string[] | number[]):
     const response = await initFile({
       apiParam: 'Files/getInitFile',
       FileID: fileId
-    })
+    }, config?.apiBaseUrl || '/')
 
     if (!response?.data || response.data.length === 0) {
       fileList.value = []

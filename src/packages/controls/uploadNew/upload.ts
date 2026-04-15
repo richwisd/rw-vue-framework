@@ -8,14 +8,6 @@ import {
 
 import Upload from './upload.vue'
 
-import { ref } from 'vue'
-
-const baseUrl = ref('')
-
-export function setBaseUrl(apiBaseUrl: string ) {
-  baseUrl.value = apiBaseUrl
-}
-
 export const Template: SFCWithInstall<typeof Upload> = withInstall(Upload)
 
 // 基础类型定义
@@ -130,11 +122,11 @@ export const getUploadAccept = (fileType: MediaTypeT): string => {
 export const removeUploadedFile = async (
   fileId: string | number,
   userType: UserTypeT = '0',
+  baseUrl: string
 ): Promise<boolean> => {
   try {
-    const endpoint =
-      userType === '0' ? '?p=files&a=delUserFile' : '?p=files&a=delSiteFile'
-    const response = await http.post(baseUrl.value + endpoint, { FileID: fileId })
+    const endpoint = userType === '0' ? '?p=files&a=delUserFile' : '?p=files&a=delSiteFile'
+    const response = await http.post(baseUrl+ endpoint, { FileID: fileId })
 
     if (response?.status === 0) {
       ElMessage.success('成功删除上传的文件')
@@ -159,18 +151,21 @@ export const handleUploadError = (error: Error, fileName: string): void => {
 // API 接口方法
 export const initFile = async (
   data: InitFileParams,
+  baseUrl: string
 ): Promise<ApiResponse<FileData[]>> => {
-  return http.post(baseUrl.value + '?p=Files&a=getInitFile&apiName=Files/getInitFile', data)
+  return http.post(baseUrl+ '?p=Files&a=getInitFile&apiName=Files/getInitFile', data)
 }
 
-export const getFileList = async (data: {
-  FileType: MediaTypeT
-  FileModel: number
-  searchVal: string
-  pageSize: number
-  page: number
+export const getFileList = async (
+  baseUrl: string,
+  data: {
+    FileType: MediaTypeT
+    FileModel: number
+    searchVal: string
+    pageSize: number
+    page: number
 }): Promise<ApiResponse<{ rows: FileData[]; total: number }>> => {
-  return http.post(baseUrl.value + '?p=Files&a=getFileList', data)
+  return http.post(baseUrl + '?p=Files&a=getFileList', data)
 }
 
 // 工具函数

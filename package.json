@@ -1,17 +1,17 @@
 {
-  "name": "duck-vue-components",
+  "name": "rw-vue-framework",
   "type": "module",
-  "version": "0.2.97",
+  "version": "0.0.2",
   "description": "A Vue 3 component library with controls, utils, stores and more.",
-  "author": "Your Name <your.email@mail.com>",
+  "author": "richwisd.com",
   "license": "MIT",
-  "homepage": "https://github.com/your-username/duck-vue-components#readme",
+  "homepage": "https://gitee.com/richwisd/rw-vue-framework#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-username/duck-vue-components.git"
+    "url": "https://gitee.com/richwisd/rw-vue-framework.git"
   },
   "bugs": {
-    "url": "https://github.com/your-username/duck-vue-components/issues"
+    "url": "https://gitee.com/richwisd/rw-vue-framework/issues"
   },
   "keywords": [
     "vue",

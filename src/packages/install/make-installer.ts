@@ -12,6 +12,8 @@ export const makeInstaller = (components: Plugin[] = []) => {
 
     app.provide('frameworkConfig', { apiBaseUrl, privateKey })
 
+    app.config.globalProperties.$privateKey = privateKey 
+
     components.forEach((component) => {
       app.use(component)
     })
