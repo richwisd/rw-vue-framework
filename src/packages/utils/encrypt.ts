@@ -2,13 +2,9 @@ import CryptoJS from 'crypto-js'
 
 import { ElMessageBox } from 'element-plus';
 
-import { inject } from 'vue'
+import type { JSONValue } from '../constants'
 
-import type { JSONValue, FrameworkOptions } from '../constants'
-
-const config = inject('frameworkConfig') as FrameworkOptions
-
-export function rwEncode(data: JSONValue, privateKey = config.privateKey || "") {
+export function rwEncode(data: JSONValue, privateKey = "9IUYGv58") {
     // console.log(data)
     const dataString = JSON.stringify(data);
     const keyHex = CryptoJS.enc.Utf8.parse(privateKey)
@@ -18,7 +14,7 @@ export function rwEncode(data: JSONValue, privateKey = config.privateKey || "") 
     return ResultString
 }
 //解密，与rwFramework对应加解密
-export function rwDecode(data: string, privateKey=config.privateKey || "", showError = true) {
+export function rwDecode(data: string, privateKey = "9IUYGv58", showError = true) {
     const keyHex = CryptoJS.enc.Utf8.parse(privateKey)
     const options = { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.Pkcs7 }
 

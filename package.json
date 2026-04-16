@@ -1,11 +1,11 @@
 {
   "name": "rw-vue-framework",
   "type": "module",
-  "version": "0.0.2",
+  "version": "1.0.21",
   "description": "A Vue 3 component library with controls, utils, stores and more.",
-  "author": "richwisd.com",
+  "author": "richwisd",
   "license": "MIT",
-  "homepage": "https://gitee.com/richwisd/rw-vue-framework#readme",
+  "homepage": "https://www.richwisd.net",
   "repository": {
     "type": "git",
     "url": "https://gitee.com/richwisd/rw-vue-framework.git"

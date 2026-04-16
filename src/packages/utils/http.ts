@@ -1,3 +1,6 @@
+import Cookies from 'js-cookie'
+import { rwEncode, rwDecode } from './encrypt'
+
 import axios, {
   // AxiosError,
   type AxiosInstance,
@@ -738,43 +741,43 @@ export class Http {
 }
 
 // 创建并导出一个默认的 Http 实例，使用单例模式确保全局只有一个实例
-// export const http = Http.getInstance({
-//   // 可以在这里添加默认配置
-//   baseURL: import.meta.env.VITE_API_URL,
-//   timeout: 10000,
-//   headers: {
-//     'Content-Type': 'application/json',
-//   },
-//   encrypt: true, // 是否加密
-//   encryptOptions: {
-//     encryptKey: '9IUYGv58', // 加密密钥
-//     encryptFunc: rwEncode, // 加密方法
-//     decryptFunc: rwDecode, // 解密方法
-//   },
-//   defaultParams: {
-//     ClientTime: ()=> Date.now(),
-//     rwCookieID: ()=> Cookies.get('rwCookieID'),
-//     ClientLang: ()=> Cookies.get('ClientLang') ?? 'zh',
-//   }
-// })
+export const http = Http.getInstance({
+  // 可以在这里添加默认配置
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  encrypt: true, // 是否加密
+  encryptOptions: {
+    encryptKey: '9IUYGv58', // 加密密钥
+    encryptFunc: rwEncode, // 加密方法
+    decryptFunc: rwDecode, // 解密方法
+  },
+  defaultParams: {
+    ClientTime: ()=> Date.now(),
+    rwCookieID: ()=> Cookies.get('rwCookieID'),
+    ClientLang: ()=> Cookies.get('ClientLang') ?? 'zh',
+  }
+})
 
 // 获取当前的实例（函数形式，确保获取最新的实例）
 // export const getHttp = () => Http.getInstance()
 
 // // 创建一个代理对象，提供完全的向后兼容性
-export const http = new Proxy({} as Http, {
-  get(target, prop) {
-    const instance = Http.getInstance()
-    const value = instance[prop as keyof Http]
+// export const http = new Proxy({} as Http, {
+//   get(target, prop) {
+//     const instance = Http.getInstance()
+//     const value = instance[prop as keyof Http]
 
-    // 如果是方法，绑定正确的 this 上下文
-    if (typeof value === 'function') {
-      return value.bind(instance)
-    }
+//     // 如果是方法，绑定正确的 this 上下文
+//     if (typeof value === 'function') {
+//       return value.bind(instance)
+//     }
 
-    return value
-  },
-})
+//     return value
+//   },
+// })
 
 export const initHttp = (HttpConfig:any) => {
   Http.getInstance(HttpConfig)
