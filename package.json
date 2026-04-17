@@ -1,7 +1,7 @@
 {
   "name": "rw-vue-framework",
   "type": "module",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "A Vue 3 component library with controls, utils, stores and more.",
   "author": "richwisd",
   "license": "MIT",
@@ -40,6 +40,10 @@
     "./icons": {
       "import": "./dist/icons.js",
       "require": "./dist/icons.cjs"
+    },
+    "./layout": {
+      "import": "./dist/layout.js",
+      "require": "./dist/layout.cjs"
     },
     "./locale": {
       "import": "./dist/locale.js",
@@ -115,6 +119,7 @@
     "lodash-unified": "^1.0.3",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
+    "screenfull": "^6.0.2",
     "sortablejs": "^1.15.7",
     "vue-i18n": "^11.3.2",
     "xlsx": "^0.18.5"

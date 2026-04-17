@@ -146,8 +146,17 @@ export function mergeLocaleMessage(moduleName: string = '', langs: langsI, targe
 }
 
 export const { locale } = i18n.global
+
 export const t = (key: string, values?: any) => {
   return i18n.global.t(key, values)
+}
+
+export const n = (key: number, values?: any) => {
+  return i18n.global.n(key, values)
+}
+
+export const d = (key: string, values?: any) => {
+  return i18n.global.d(key, values)
 }
 
 

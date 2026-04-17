@@ -33,6 +33,7 @@ export default defineConfig({
     "hooks": "./src/packages/hooks/index.ts",
     "icons": "./src/packages/icons/index.ts",
     "pages": "./src/packages/pages/index.ts",
+    "layout": "./src/packages/layout/index.ts",
   },
   // 去掉 chunk 的 hash
   rollupOptions: {

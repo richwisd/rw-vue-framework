@@ -2,6 +2,8 @@ export * from './affix'
 
 export * from './alert'
 
+export * from './collapse'
+
 export * from  './avatar'
 
 export * from './autocomplete'
@@ -64,3 +66,5 @@ export * from './tagComp'
 export * from './text'
 export * from './tree'
 export * from './uploadNew'
+
+export * from './smallComp'
