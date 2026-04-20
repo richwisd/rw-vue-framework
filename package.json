@@ -1,7 +1,7 @@
 {
   "name": "rw-vue-framework",
   "type": "module",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A Vue 3 component library with controls, utils, stores and more.",
   "author": "richwisd",
   "license": "MIT",
