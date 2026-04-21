@@ -21,6 +21,9 @@ export interface loginT {
   checkLoginStatus: number
   /** 显示登录验证码 */
   ShowLoginAuthCode: boolean
+  /** 退出时是否清理缓存 */
+  clearCacheOnExit:boolean
+
 }
 export interface layoutI {
   /** 平台初始布局样式，以后有新的效果再加 */
@@ -93,6 +96,7 @@ export const useAppConfigStore = defineStore('appConfig', {
       ShowLoginAuthCode: true,
       /** 重复提交时间，界于5-60之间，默认10，单位秒 */
 
+      clearCacheOnExit:false
 
     },
     expires: {
