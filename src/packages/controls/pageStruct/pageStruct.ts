@@ -73,6 +73,8 @@ export const init = (
     fields,
     fieldsMap,
     subModules:defaultSubModules,
+    menus:[],   // 菜单
+    routers:[], // 路由
     apis: {
       index: '/index',
       info: '/info',
@@ -108,7 +110,7 @@ export const init = (
       //上一级的name
       const name=self.name+"_"+subModuleName//这儿还要加上上一级的name
       const title=name+".TITLE"
-      self.subModules.push({
+      self.subModules?.push({
         name,
         title,
         rule,
@@ -120,9 +122,9 @@ export const init = (
     },
     deleteSubModule(name:string):boolean{
       // 通过字段name 删除 值
-      const index=self.subModules.findIndex(item=>item.name==name)
-      if(index > -1){
-        self.subModules.splice(index,1)
+      const index=self.subModules?.findIndex(item=>item.name==name)
+      if(index !== undefined && index > -1){
+        self.subModules?.splice(index,1)
         return true
       }
       return false
