@@ -17,21 +17,33 @@ export type OptionT = {
   fields?: tableStruct.OptionT[]
   fieldsMap?: Map<string, tableStruct.OptionT>
   subModules?:subModuleT[]
+  menus:string[]   // 菜单
+  routers:RouterT[] // 路由
   mTableID?: number|undefined
   mTableIDValue?: number|string
-
+  // 添加菜单
+  addMenu:(name:string, children?:string[])=>void
+  // 添加路由
+  addRouter:(name:string, path:string, component:()=>{}, meta?:string)=>void
   addField: (
     fieldName: string | string[],
     type: tableStruct.mysqlFieldTypeT,
     options?: Partial<tableStruct.OptionT>,
   ) => void
-
   addSubModule?:(name:string,
     rule:string,
     options:Partial<subModuleT>
   )=>void
   deleteSubModule?:(name:string)=>boolean
 }
+
+export type RouterT = {
+  name:string,
+  path:string,
+  component:()=>{},
+  meta?:string,
+}
+
 export type ApisOPtions = {
   index: string
   info: string
@@ -87,6 +99,20 @@ export const init = (
       ...options.apis,
     },
     tableType: 'single',
+    addMenu:(name:string, children?:string[])=>{
+      self.menus.push(name)
+      if(children !== undefined && children.length > 0){
+        self.menus.push(...children)
+      }
+    },
+    addRouter:(name:string, path:string, component:()=>{}, meta?:string)=>{
+      self.routers.push({
+        name,
+        path,
+        component,
+        meta,
+      })
+    },
     addField: (
       fieldName: string | string[],
       type: tableStruct.mysqlFieldTypeT,
