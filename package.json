@@ -121,7 +121,7 @@
     "pinia-plugin-persistedstate": "^4.7.1",
     "screenfull": "^6.0.2",
     "sortablejs": "^1.15.7",
-    "vue-i18n": "^11.4.2",
+    "vue-i18n": "^11.4.4",
     "xlsx": "^0.18.5"
   },
   "inlinedDependencies": {
