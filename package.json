@@ -125,6 +125,6 @@
     "xlsx": "^0.18.5"
   },
   "inlinedDependencies": {
-    "@vue/reactivity": "3.5.32"
+    "@vue/reactivity": "3.5.34"
   }
 }
