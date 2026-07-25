@@ -4,7 +4,7 @@
 
 // import  {RwAffix} from '../../dist/controls/affix'
 
-import { RwButton, RwAffix } from 'duck-vue-components/controls'
+import { RwButton, RwAffix } from 'rw-vue-framework/controls'
 
 import { Search } from '@element-plus/icons-vue'
 

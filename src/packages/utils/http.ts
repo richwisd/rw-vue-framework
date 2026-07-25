@@ -1,5 +1,5 @@
-import Cookies from 'js-cookie'
-import { rwEncode, rwDecode } from './encrypt'
+import Cookies from "js-cookie";
+import { rwEncode, rwDecode } from "./encrypt";
 
 import axios, {
   // AxiosError,
@@ -7,111 +7,111 @@ import axios, {
   type AxiosRequestConfig,
   type AxiosResponse,
   type InternalAxiosRequestConfig,
-} from 'axios'
+} from "axios";
 
 // 扩展 AxiosRequestConfig 类型
-declare module 'axios' {
+declare module "axios" {
   interface AxiosRequestConfig {
-    cache?: boolean
-    useQueue?: boolean
-    _retryCount?: number
+    cache?: boolean;
+    useQueue?: boolean;
+    _retryCount?: number;
   }
 }
 // 插件接口
 export interface HttpPlugin {
-  name: string
+  name: string;
   onRequest?: (
     config: InternalAxiosRequestConfig,
-  ) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>
+  ) => InternalAxiosRequestConfig | Promise<InternalAxiosRequestConfig>;
   onResponse?: (
     response: AxiosResponse,
-  ) => AxiosResponse | Promise<AxiosResponse>
-  onError?: (error: any) => any
+  ) => AxiosResponse | Promise<AxiosResponse>;
+  onError?: (error: any) => any;
 }
 
 // 响应数据处理配置
 export interface ResponseHandlerConfig {
   // 成功状态码列表
-  successCodes?: number[]
+  successCodes?: number[];
   // 需要重新登录的状态码列表
-  reloginCodes?: number[]
+  reloginCodes?: number[];
   // 登录页面路径，支持字符串或函数动态生成，默认为 '/login'
-  loginPath?: string | (() => string)
+  loginPath?: string | (() => string);
   // 需要跳转的状态码配置
   redirectCodes?: {
-    [code: number]: string // 状态码 -> 跳转路径
-  }
+    [code: number]: string; // 状态码 -> 跳转路径
+  };
   // 自定义状态码处理器
   customHandlers?: {
-    [code: number]: (data: any, response: AxiosResponse) => any
-  }
+    [code: number]: (data: any, response: AxiosResponse) => any;
+  };
   // 重新登录方法
-  reLogin?: () => void
+  reLogin?: () => void;
   // 路由跳转函数
-  routerPush?: (path: string) => void
+  routerPush?: (path: string) => void;
   // 消息提示函数
   showMessage?: (
     message: string,
-    type?: 'success' | 'error' | 'warning' | 'info',
-  ) => void
+    type?: "success" | "error" | "warning" | "info",
+  ) => void;
 }
 
 // 扩展配置接口
 export interface HttpConfig extends AxiosRequestConfig {
-  init?: boolean
+  init?: boolean;
   // 基础配置
-  baseURL?: string
+  baseURL?: string;
 
   // 功能开关
-  repeatPost?: boolean // 是否防止重复提交
-  repeatPostTime?: number // 重复提交限制时间(秒)
-  showError?: boolean // 是否显示错误信息
-  autoRelogin?: boolean // 是否自动重新登录
-  isDebug?: boolean // 是否开启调试模式
+  repeatPost?: boolean; // 是否防止重复提交
+  repeatPostTime?: number; // 重复提交限制时间(秒)
+  showError?: boolean; // 是否显示错误信息
+  autoRelogin?: boolean; // 是否自动重新登录
+  isDebug?: boolean; // 是否开启调试模式
 
   // 统一响应处理
-  responseHandler?: ResponseHandlerConfig // 响应处理配置
+  responseHandler?: ResponseHandlerConfig; // 响应处理配置
 
   // 加密配置
-  encrypt?: boolean // 是否加密
+  encrypt?: boolean; // 是否加密
   encryptOptions?: {
-    encryptKey?: string // 加密密钥
-    encryptFunc?: (data: any, key: string) => any // 加密方法
-    decryptFunc?: (data: any, key: string) => any // 解密方法
-  }
+    encryptKey?: string; // 加密密钥
+    encryptFunc?: (data: any, key: string) => any; // 加密方法
+    decryptFunc?: (data: any, key: string) => any; // 解密方法
+  };
 
   // 默认参数
   defaultParams?: {
-    [key: string]: any
-  }
+    [key: string]: any;
+  };
 
   // 自定义处理函数
-  errorHandler?: () => void // 自定义错误处理
-  reloginHandler?: () => Promise<boolean> // 自定义重新登录处理
+  errorHandler?: () => void; // 自定义错误处理
+  reloginHandler?: () => Promise<boolean>; // 自定义重新登录处理
 
   // 插件系统
-  plugins?: HttpPlugin[] // 自定义插件列表
+  plugins?: HttpPlugin[]; // 自定义插件列表
 }
 
 /**
  * HTTP 请求类 - 单例模式实现
  */
 export class Http {
-  private static instance: Http
-  private static domainInstances: Map<string, Http> = new Map()
-  public axiosInstance: AxiosInstance
-  public config: HttpConfig
-  private plugins: HttpPlugin[] = []
+  private static instance: Http;
+  private static domainInstances: Map<string, Http> = new Map();
+  public axiosInstance: AxiosInstance;
+  public config: HttpConfig;
+  private plugins: HttpPlugin[] = [];
   /**
    * 私有构造函数，防止外部直接实例化
    */
   private constructor(config: HttpConfig = {}) {
     this.config = {
       init: false,
-      baseURL: '', // 默认为空，由使用者提供
+      baseURL: "", // 默认为空，由使用者提供
       timeout: 10000,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       repeatPost: false,
       repeatPostTime: 3,
@@ -119,29 +119,29 @@ export class Http {
       autoRelogin: true,
       isDebug: false,
       ...config,
-    }
+    };
     this.axiosInstance = axios.create({
       baseURL: this.config.baseURL,
       timeout: this.config.timeout,
       headers: this.config.headers,
-    })
+    });
 
     // 注册内置插件
-    this.registerBuiltinPlugins()
+    this.registerBuiltinPlugins();
     // 注册自定义插件
     if (this.config.plugins && this.config.plugins.length) {
-      this.use(...this.config.plugins)
+      this.use(...this.config.plugins);
     }
-    this.setupInterceptors()
+    this.setupInterceptors();
   }
   /**
    * 获取单例实例
    */
   public static getInstance(config?: HttpConfig): Http {
     if (!Http.instance || config?.init) {
-      Http.instance = new Http(config)
+      Http.instance = new Http(config);
     }
-    return Http.instance
+    return Http.instance;
   }
   /**
    * 获取指定域名的实例
@@ -153,35 +153,35 @@ export class Http {
     config: HttpConfig = {},
   ): Http {
     if (!Http.domainInstances.has(domain)) {
-      const domainConfig = { ...config, baseURL: domain }
-      Http.domainInstances.set(domain, new Http(domainConfig))
+      const domainConfig = { ...config, baseURL: domain };
+      Http.domainInstances.set(domain, new Http(domainConfig));
     }
-    return Http.domainInstances.get(domain)!
+    return Http.domainInstances.get(domain)!;
   }
   /**
    * 创建新的 HTTP 实例（用于特殊需求）
    */
   public static createInstance(config: HttpConfig = {}): Http {
-    return new Http(config)
+    return new Http(config);
   }
   /**
    * 重新配置实例
    */
   public reconfigure(config: HttpConfig): void {
-    this.config = { ...this.config, ...config }
+    this.config = { ...this.config, ...config };
     // 重新创建 axios 实例
     this.axiosInstance = axios.create({
       baseURL: this.config.baseURL,
       timeout: this.config.timeout,
       headers: this.config.headers,
-    })
+    });
     // 清空插件并重新注册
-    this.plugins = []
-    this.registerBuiltinPlugins()
+    this.plugins = [];
+    this.registerBuiltinPlugins();
     if (this.config.plugins && this.config.plugins.length) {
-      this.use(...this.config.plugins)
+      this.use(...this.config.plugins);
     }
-    this.setupInterceptors()
+    this.setupInterceptors();
   }
   /**
    * 注册内置插件
@@ -189,21 +189,21 @@ export class Http {
   private registerBuiltinPlugins(): void {
     // 统一响应处理插件（优先级最高，最先注册）
     if (this.config.responseHandler) {
-      this.use(this.createResponseHandlerPlugin(this.config.responseHandler))
+      this.use(this.createResponseHandlerPlugin(this.config.responseHandler));
     }
 
     // 根据配置注册内置插件
     if (this.config.repeatPost) {
-      this.use(this.createRepeatPostPlugin(this.config.repeatPostTime))
+      this.use(this.createRepeatPostPlugin(this.config.repeatPostTime));
     }
     if (this.config.showError) {
-      this.use(this.createErrorHandlerPlugin(this.config.errorHandler))
+      this.use(this.createErrorHandlerPlugin(this.config.errorHandler));
     }
     if (this.config.autoRelogin) {
-      this.use(this.createReloginPlugin(this.config.reloginHandler))
+      this.use(this.createReloginPlugin(this.config.reloginHandler));
     }
     if (this.config.isDebug) {
-      this.use(this.createDebugPlugin())
+      this.use(this.createDebugPlugin());
     }
   }
   /**
@@ -212,10 +212,10 @@ export class Http {
   public use(...plugins: HttpPlugin[]): Http {
     plugins.forEach((plugin) => {
       if (!this.plugins.some((p) => p.name === plugin.name)) {
-        this.plugins.push(plugin)
+        this.plugins.push(plugin);
       }
-    })
-    return this
+    });
+    return this;
   }
   /**
    * 设置拦截器
@@ -231,33 +231,33 @@ export class Http {
             this.config.defaultParams,
           ).reduce(
             (acc, [key, value]) => {
-              acc[key] = typeof value === 'function' ? value() : value
-              return acc
+              acc[key] = typeof value === "function" ? value() : value;
+              return acc;
             },
             {} as Record<string, any>,
-          )
+          );
 
-          config.data = { ...processedParams, ...config.data }
+          config.data = { ...processedParams, ...config.data };
         }
 
         // 加密处理
         if (this.config.encrypt && this.config.encryptOptions?.encryptFunc) {
           config.data = this.config.encryptOptions.encryptFunc(
             config.data,
-            this.config.encryptOptions.encryptKey||"",
-          )
+            this.config.encryptOptions.encryptKey || "",
+          );
         }
 
-        let processedConfig = config
+        let processedConfig = config;
         for (const plugin of this.plugins) {
           if (plugin.onRequest) {
-            processedConfig = await plugin.onRequest(processedConfig)
+            processedConfig = await plugin.onRequest(processedConfig);
           }
         }
-        return processedConfig
+        return processedConfig;
       },
       (error) => Promise.reject(error),
-    )
+    );
     // 响应拦截器
     this.axiosInstance.interceptors.response.use(
       async (response) => {
@@ -265,65 +265,65 @@ export class Http {
         if (this.config.encrypt && this.config.encryptOptions?.decryptFunc) {
           response.data = this.config.encryptOptions.decryptFunc(
             response.data,
-            this.config.encryptOptions.encryptKey||"",
-          )
+            this.config.encryptOptions.encryptKey || "",
+          );
         }
-        let processedResponse = response
+        let processedResponse = response;
         for (const plugin of this.plugins) {
           if (plugin.onResponse) {
-            processedResponse = await plugin.onResponse(processedResponse)
+            processedResponse = await plugin.onResponse(processedResponse);
           }
         }
-        return processedResponse.data
+        return processedResponse.data;
       },
       async (error) => {
         // 应用所有插件的错误处理
-        let processedError = error
+        let processedError = error;
         for (const plugin of this.plugins) {
           if (plugin.onError) {
-            processedError = await plugin.onError(processedError)
+            processedError = await plugin.onError(processedError);
           }
         }
-        return Promise.reject(processedError)
+        return Promise.reject(processedError);
       },
-    )
+    );
   }
   /**
    * 创建防重复提交插件
    */
   private createRepeatPostPlugin(time: number = 3): HttpPlugin {
     return {
-      name: 'repeatPost',
+      name: "repeatPost",
       onRequest: (config) => {
-        const url = config.url || ''
-        const data = config.data || {}
+        const url = config.url || "";
+        const data = config.data || {};
         // 实现防重复提交逻辑
         if (this.isRepeatPost(url, data, time)) {
           config.cancelToken = new axios.CancelToken((cancel) => {
-            cancel('重复提交，已取消请求')
-          })
+            cancel("重复提交，已取消请求");
+          });
         }
-        return config
+        return config;
       },
-    }
+    };
   }
   /**
    * 创建错误处理插件
    */
   private createErrorHandlerPlugin(customHandler?: () => void): HttpPlugin {
     return {
-      name: 'errorHandler',
+      name: "errorHandler",
       onError: (error) => {
-        const message = error.message || '请求失败'
+        const message = error.message || "请求失败";
         if (customHandler) {
-          customHandler()
+          customHandler();
         } else {
           // 默认错误处理
-          console.error(`请求错误: ${message}`)
+          console.error(`请求错误: ${message}`);
         }
-        return error
+        return error;
       },
-    }
+    };
   }
   /**
    * 创建重新登录插件
@@ -332,45 +332,45 @@ export class Http {
     reloginHandler?: () => Promise<boolean>,
   ): HttpPlugin {
     return {
-      name: 'autoRelogin',
+      name: "autoRelogin",
       onResponse: async (response) => {
-        const data = response.data
+        const data = response.data;
         // 处理登录失效
         if (data && data.status === 99) {
           if (reloginHandler) {
-            const loginResult = await reloginHandler()
+            const loginResult = await reloginHandler();
             if (loginResult) {
               // 重新发送请求
-              const result = await this.axiosInstance(response.config)
-              return { ...response, data: result }
+              const result = await this.axiosInstance(response.config);
+              return { ...response, data: result };
             }
           }
           // 默认重新登录处理
           // 这里可以添加默认的重新登录逻辑
         }
-        return response
+        return response;
       },
-    }
+    };
   }
   /**
    * 创建调试插件
    */
   private createDebugPlugin(): HttpPlugin {
     return {
-      name: 'debug',
+      name: "debug",
       onRequest: (config) => {
-        console.log('请求配置:', config)
-        return config
+        console.log("请求配置:", config);
+        return config;
       },
       onResponse: (response) => {
-        console.log('响应数据:', response.data)
-        return response
+        console.log("响应数据:", response.data);
+        return response;
       },
       onError: (error) => {
-        console.error('请求错误:', error)
-        return error
+        console.error("请求错误:", error);
+        return error;
       },
-    }
+    };
   }
   /**
    * 创建统一响应处理插件
@@ -381,83 +381,84 @@ export class Http {
     const {
       successCodes = [200, 0], // 默认成功状态码
       reloginCodes = [401, 403, 99], // 默认需要重新登录的状态码
-      loginPath = '/login', // 默认登录页面路径
+      loginPath = "/login", // 默认登录页面路径
       redirectCodes = {},
       customHandlers = {},
       reLogin,
       routerPush,
       showMessage,
-    } = config
+    } = config;
 
     return {
-      name: 'responseHandler',
+      name: "responseHandler",
       onResponse: async (response) => {
-        const data = response.data
-        const status = data?.status ?? data?.code ?? response.status
+        const data = response.data;
+        const status = data?.status ?? data?.code ?? response.status;
 
         // 自定义状态码处理器优先级最高
         if (customHandlers[status]) {
-          return { ...response, data: customHandlers[status](data, response) }
+          return { ...response, data: customHandlers[status](data, response) };
         }
 
         // 处理需要重新登录的状态码
         if (reloginCodes.includes(status)) {
-          const message = data?.message || data?.msg || '登录已过期，请重新登录'
+          const message =
+            data?.message || data?.msg || "登录已过期，请重新登录";
 
           if (showMessage) {
-            showMessage(message, 'warning')
+            showMessage(message, "warning");
           }
 
           if (reLogin) {
-            reLogin()
+            reLogin();
           } else if (routerPush) {
             const finalLoginPath =
-              typeof loginPath === 'function' ? loginPath() : loginPath
-            routerPush(finalLoginPath)
+              typeof loginPath === "function" ? loginPath() : loginPath;
+            routerPush(finalLoginPath);
           }
-          return Promise.reject(new Error(message))
+          return Promise.reject(new Error(message));
         }
 
         // 处理需要跳转的状态码
         if (redirectCodes[status]) {
-          const message = data?.message || data?.msg || '页面跳转中...'
+          const message = data?.message || data?.msg || "页面跳转中...";
 
           if (showMessage) {
-            showMessage(message, 'info')
+            showMessage(message, "info");
           }
 
           if (routerPush) {
-            routerPush(redirectCodes[status])
+            routerPush(redirectCodes[status]);
           }
         }
 
         // 处理成功状态码
         if (successCodes.includes(status)) {
-          return response
+          return response;
         }
 
         // 处理业务错误状态码
-        const errorMessage = data?.message || data?.msg || '请求失败'
+        const errorMessage = data?.message || data?.msg || "请求失败";
 
         if (showMessage) {
-          showMessage(errorMessage, 'error')
+          showMessage(errorMessage, "error");
         }
 
         // 对于业务错误，可以选择抛出错误或返回数据
         // 这里选择抛出错误，让调用方处理
-        return Promise.reject(new Error(errorMessage))
+        return Promise.reject(new Error(errorMessage));
       },
       onError: (error) => {
         // 处理网络错误等
-        const message = error.message || '网络请求失败'
+        const message = error.message || "网络请求失败";
 
         if (showMessage) {
-          showMessage(message, 'error')
+          showMessage(message, "error");
         }
 
-        return Promise.reject(error)
+        return Promise.reject(error);
       },
-    }
+    };
   }
   /**
    * 检查是否重复提交
@@ -465,7 +466,7 @@ export class Http {
   private isRepeatPost(url: string, data: any, time: any): boolean {
     // 实现防重复提交的逻辑
     // 这里需要根据实际情况实现
-    return false
+    return false;
   }
   /**
    * GET 请求
@@ -481,9 +482,9 @@ export class Http {
     domain?: string,
   ): Promise<T> {
     if (domain) {
-      return Http.getDomainInstance(domain).get<T>(url, params, config)
+      return Http.getDomainInstance(domain).get<T>(url, params, config);
     }
-    return this.axiosInstance.get(url, { params, ...config })
+    return this.axiosInstance.get(url, { params, ...config });
   }
   /**
    * POST 请求
@@ -499,9 +500,9 @@ export class Http {
     domain?: string,
   ): Promise<T> {
     if (domain) {
-      return Http.getDomainInstance(domain).post<T>(url, data, config)
+      return Http.getDomainInstance(domain).post<T>(url, data, config);
     }
-    return this.axiosInstance.post(url, data, config)
+    return this.axiosInstance.post(url, data, config);
   }
   /**
    * PUT 请求
@@ -517,9 +518,9 @@ export class Http {
     domain?: string,
   ): Promise<T> {
     if (domain) {
-      return Http.getDomainInstance(domain).put<T>(url, data, config)
+      return Http.getDomainInstance(domain).put<T>(url, data, config);
     }
-    return this.axiosInstance.put(url, data, config)
+    return this.axiosInstance.put(url, data, config);
   }
   /**
    * DELETE 请求
@@ -533,9 +534,9 @@ export class Http {
     domain?: string,
   ): Promise<T> {
     if (domain) {
-      return Http.getDomainInstance(domain).delete<T>(url, config)
+      return Http.getDomainInstance(domain).delete<T>(url, config);
     }
-    return this.axiosInstance.delete(url, config)
+    return this.axiosInstance.delete(url, config);
   }
 
   /**
@@ -543,7 +544,7 @@ export class Http {
    * @param domain 域名
    */
   public domain(domain: string): Http {
-    return Http.getDomainInstance(domain)
+    return Http.getDomainInstance(domain);
   }
   /**
    * 添加请求取消功能
@@ -564,22 +565,26 @@ export class Http {
     config = {},
     domain?: string,
   ): Promise<T> {
-    const formData = file instanceof File ? new FormData() : file
+    const formData = file instanceof File ? new FormData() : file;
 
     if (file instanceof File) {
-      formData.append('file', file)
+      formData.append("file", file);
     }
     const uploadConfig = {
       headers: {
-        'Content-Type': 'multipart/form-data',
+        "Content-Type": "multipart/form-data",
       },
       ...config,
-    }
+    };
 
     if (domain) {
-      return Http.getDomainInstance(domain).post<T>(url, formData, uploadConfig)
+      return Http.getDomainInstance(domain).post<T>(
+        url,
+        formData,
+        uploadConfig,
+      );
     }
-    return this.axiosInstance.post(url, formData, uploadConfig)
+    return this.axiosInstance.post(url, formData, uploadConfig);
   }
   /**
    * 文件下载请求
@@ -591,14 +596,14 @@ export class Http {
     domain?: string,
   ): Promise<Blob> {
     const downloadConfig: AxiosRequestConfig = {
-      responseType: 'blob' as const,
+      responseType: "blob" as const,
       ...config,
-    }
+    };
 
     if (domain) {
-      return Http.getDomainInstance(domain).get(url, params, downloadConfig)
+      return Http.getDomainInstance(domain).get(url, params, downloadConfig);
     }
-    return this.axiosInstance.get(url, { params, ...downloadConfig })
+    return this.axiosInstance.get(url, { params, ...downloadConfig });
   }
   /**
    * 创建请求重试插件
@@ -743,23 +748,23 @@ export class Http {
 // 创建并导出一个默认的 Http 实例，使用单例模式确保全局只有一个实例
 export const http = Http.getInstance({
   // 可以在这里添加默认配置
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: "",
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
   encrypt: true, // 是否加密
   encryptOptions: {
-    encryptKey: '9IUYGv58', // 加密密钥
+    encryptKey: "9IUYGv58", // 加密密钥
     encryptFunc: rwEncode, // 加密方法
     decryptFunc: rwDecode, // 解密方法
   },
   defaultParams: {
-    ClientTime: ()=> Date.now(),
-    rwCookieID: ()=> Cookies.get('rwCookieID'),
-    ClientLang: ()=> Cookies.get('ClientLang') ?? 'zh',
-  }
-})
+    ClientTime: () => Date.now(),
+    rwCookieID: () => Cookies.get("rwCookieID"),
+    ClientLang: () => Cookies.get("ClientLang") ?? "zh",
+  },
+});
 
 // 获取当前的实例（函数形式，确保获取最新的实例）
 // export const getHttp = () => Http.getInstance()
@@ -779,8 +784,8 @@ export const http = Http.getInstance({
 //   },
 // })
 
-export const initHttp = (HttpConfig:any) => {
-  Http.getInstance(HttpConfig)
-}
+export const initHttp = (HttpConfig: any) => {
+  Http.getInstance(HttpConfig);
+};
 
-export const useHttp = () => http
+export const useHttp = () => http;

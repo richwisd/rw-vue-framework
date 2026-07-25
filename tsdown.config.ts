@@ -38,6 +38,7 @@ export default defineConfig({
   // 去掉 chunk 的 hash
   rollupOptions: {
     output: {
+      exports: 'named',
       entryFileNames: '[name].[format].[ext]',
       chunkFileNames: '[name].[format].[ext]',
       assetFileNames: '[name].[ext]',

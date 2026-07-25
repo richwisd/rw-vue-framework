@@ -10,7 +10,7 @@
     <el-container>
        <slot name="layoutMenus"></slot>
       <el-container style="flex-wrap: wrap;">
-        <el-header class="tabs_wrapper">
+        <el-header  v-if="$slots.layoutTabs"  class="tabs_wrapper">
           <slot name="layoutTabs"></slot>
         </el-header>
         <el-main class="main-wrapper">

@@ -6,12 +6,12 @@
      <slot name="layoutMenus"></slot>
     
     <el-container>
-      <el-header class="header_wrapper" height="50">
+      <el-header class="header_wrapper" >
       <slot name="layoutHeader"></slot>
     </el-header>
       <!-- <el-container style="flex-wrap: wrap;"> -->
-        <el-header class="tabs_wrapper">
-          <slot name="layoutTabs"></slot>
+        <el-header  v-if="$slots.layoutTabs"  class="tabs_wrapper">
+          <slot name="layoutTabs"></slot> p
         </el-header>
         <el-main class="main-wrapper">
           <slot name="layoutMain"></slot>

@@ -12,9 +12,5 @@ export * as controls from "./packages/controls"
 
 import installer from './packages/install'
 
-const install = installer.install
-
-export default {
-    install
-}
+export const install = installer.install
 

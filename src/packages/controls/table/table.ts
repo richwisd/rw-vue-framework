@@ -126,9 +126,19 @@ export type OptionT = baseT &
 
     canSort: boolean
 
+    /** 当前排序字段 */
+    sortField: string
+    /** 当前排序方式 ascending / descending / null */
+    sortOrder: string
+
     loadLast: (data: infoI[]) => infoI[]
 
-    onLoad: () => void
+    onLoad: (loadData: {
+      queryPage: { page: number; pageSize: number }
+      queryOrder: { orderBy?: string; isDescending: boolean }
+      searchList: any[]
+      [key: string]: any
+    }) => any
 
 
     /** 列配置 */
@@ -167,7 +177,9 @@ export function init(
 ) {
   const showEdit = options?.showEdit ?? true
   const allForm = options?.allForm ?? false
-  console.log('allForm', allForm)
+
+
+  
   const columns: columns.OptionT[] = []
 
   const lineButtons =  reactive(RwButtonGroup.init(struct.name, { isGroup: true, buttonsArea: 'tableLine'}))
@@ -285,7 +297,9 @@ export function init(
     addUpload: (name, options) => createComponent('Upload', struct, name, { isModel: true, imgWidth: 60, ...options }, columns),
     addMergeSelect: (name, optionFrom, optionValues, options) => createMergeSelectComponent(struct, name, optionFrom, optionValues, { isModel: true, ...options }, columns),
     controlType: 'Table',
-    canSort: false
+    canSort: false,
+    sortField: '',
+    sortOrder: '',
   } as OptionT
 
   return instance

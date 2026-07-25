@@ -94,6 +94,44 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
   if (propsControl.table) {
     propsControl.table.loading = true
 
+    // 如果设置了 onLoad，直接使用自定义加载函数，跳过 HTTP 请求
+    if (propsControl.table.onLoad) {
+      try {
+        const searchList = propsControl?.search ? propsControl.search?.getSearchData(formItemData) : []
+        let loadData = {
+          queryPage: {
+            page: propsControl.pagination?.page ?? 1,
+            pageSize: propsControl.pagination?.pageSize ?? 10,
+          },
+          queryOrder: {
+            orderBy: propsControl.table?.sortField ?? undefined,
+            isDescending: propsControl.table?.sortOrder === 'descending',
+          },
+          searchList,
+        }
+        if (props.control.searchBefore) {
+          loadData = props.control.searchBefore(loadData)
+        }
+        const result = await propsControl.table.onLoad(loadData)
+        if (result) {
+          propsControl.table.data = result.data || []
+          if (propsControl.pagination) {
+            propsControl.pagination.total = result.total ?? 0
+          }
+        }
+      } catch (error) {
+        console.log('onLoad error', error)
+      }
+
+      if (propsControl.table?.loadLast) {
+        propsControl.table.data = propsControl.table.loadLast(propsControl.table.data)
+      }
+
+      propsControl.table.loading = false
+      refreshButtons()
+      return
+    }
+
     const searchList = propsControl?.search ? propsControl.search?.getSearchData(formItemData) : []
 
     // console.log('searchList', searchList, formItemData)
@@ -102,8 +140,14 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
       (propsControl?.struct?.apis?.index ?? '/index')
 
     let postData = {
-      page: propsControl.pagination?.page ?? 1,
-      pageSize: propsControl.pagination?.pageSize ?? 1,
+      queryPage: {
+        page: propsControl.pagination?.page ?? 1,
+        pageSize: propsControl.pagination?.pageSize ?? 10,
+      },
+      queryOrder: {
+        orderBy: propsControl.table?.sortField ?? undefined,
+        isDescending: propsControl.table?.sortOrder === 'descending',
+      },
       searchList: searchList,
     }
     if (props.control.searchBefore) {
@@ -135,15 +179,10 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
             position: 'top-right',
           })
         } else {
-          if (propsControl.table.onLoad) {
-            propsControl.table.data = []
-            propsControl.table.onLoad()
-          } else {
-            const resultData = res.data
-            propsControl.table.data = resultData.rows || []
-            if (propsControl.pagination) {
-              propsControl.pagination.total = resultData.total
-            }
+          const resultData = res.data
+          propsControl.table.data = resultData.rows || []
+          if (propsControl.pagination) {
+            propsControl.pagination.total = resultData.total
           }
         }
         if (propsControl.table?.loadLast) {

@@ -297,10 +297,10 @@ function saveColumnDrag() {
     columnsSetting.clearColumns(structName)
 
     const table = tableRef.value
-    const newColumns = table.store.states.columns.value
+    const newColumns = table?.store.states.columns.value
 
     let fieldsOrder: any = []
-    newColumns.map((column) => {
+    newColumns?.map((column) => {
       if (column.property != undefined) {
         if (props.pageTable && props.pageTable.tableButtons) {
           const controls = Object.values(
@@ -522,6 +522,14 @@ function getTextControlOption(itemInit: any): RwText.OptionT {
   } as RwText.OptionT
 }
 
+/** ElTable sort-change 事件，同步排序状态到 control */
+function handleSortChange(sort: { column: any; prop: string; order: string | null }) {
+  if (props.control) {
+    props.control.sortField = sort.prop || ''
+    props.control.sortOrder = sort.order || ''
+  }
+}
+
 // 暴露组件方法供外部调用
 defineExpose({
   resetRowDrag,
@@ -547,6 +555,7 @@ defineExpose({
     :element-loading-text="t('table.loading')"
     @row-click="checkRow"
     @selection-change="handleSelectionChange"
+    @sort-change="handleSortChange"
     :class="{ 'height-limit': control.allForm }"
   >
     <ElTableColumn
