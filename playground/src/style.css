@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -24,10 +24,16 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+}
+
+#app {
+  display: flex;
+  flex: 1;
 }
 
 h1 {
@@ -58,13 +64,6 @@ button:focus-visible {
   padding: 2em;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -76,4 +75,48 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* 添加到文件末尾 */
+html.dark {
+  color-scheme: dark;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+html.dark body {
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+html.dark .app-container {
+  background-color: #1a1a1a;
+}
+
+html.dark .nav-menu {
+  background-color: #2d2d2f;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+html.dark .nav-menu h2 {
+  color: #409eff;
+}
+
+html.dark .nav-menu a {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+html.dark .nav-menu a:hover {
+  background-color: #3a3a3c;
+  color: #409eff;
+}
+
+html.dark .nav-menu a.active {
+  background-color: #409eff;
+  color: white;
+}
+
+html.dark .content-container {
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
 }

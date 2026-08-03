@@ -4,7 +4,7 @@ import App from './App.vue'
 
 import './style.css'
 
-import { ElIcon } from 'element-plus'
+import { ElIcon } from 'rw-vue-framework/element-plus'
 
 const app = createApp(App)
 

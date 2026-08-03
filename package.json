@@ -26,51 +26,61 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     },
     "./constants": {
-      "import": "./dist/constants.js",
-      "require": "./dist/constants.cjs"
+      "types": "./dist/constants.d.ts",
+      "import": "./dist/constants.js"
     },
     "./controls": {
-      "import": "./dist/controls.js",
-      "require": "./dist/controls.cjs"
+      "types": "./dist/controls.d.ts",
+      "import": "./dist/controls.js"
+    },
+    "./element-plus": {
+      "types": "./dist/element-plus.d.ts",
+      "import": "./dist/element-plus.js"
     },
     "./hooks": {
-      "import": "./dist/hooks.js",
-      "require": "./dist/hooks.cjs"
+      "types": "./dist/hooks.d.ts",
+      "import": "./dist/hooks.js"
     },
     "./icons": {
-      "import": "./dist/icons.js",
-      "require": "./dist/icons.cjs"
+      "types": "./dist/icons.d.ts",
+      "import": "./dist/icons.js"
     },
     "./layout": {
-      "import": "./dist/layout.js",
-      "require": "./dist/layout.cjs"
+      "types": "./dist/layout.d.ts",
+      "import": "./dist/layout.js"
     },
     "./locale": {
-      "import": "./dist/locale.js",
-      "require": "./dist/locale.cjs"
+      "types": "./dist/locale.d.ts",
+      "import": "./dist/locale.js"
     },
     "./pages": {
-      "import": "./dist/pages.js",
-      "require": "./dist/pages.cjs"
+      "types": "./dist/pages.d.ts",
+      "import": "./dist/pages.js"
+    },
+    "./pinia": {
+      "types": "./dist/pinia.d.ts",
+      "import": "./dist/pinia.js"
     },
     "./stores": {
-      "import": "./dist/stores.js",
-      "require": "./dist/stores.cjs"
+      "types": "./dist/stores.d.ts",
+      "import": "./dist/stores.js"
     },
     "./utils": {
-      "import": "./dist/utils.js",
-      "require": "./dist/utils.cjs"
+      "types": "./dist/utils.d.ts",
+      "import": "./dist/utils.js"
+    },
+    "./vue-i18n": {
+      "types": "./dist/vue-i18n.d.ts",
+      "import": "./dist/vue-i18n.js"
     },
     "./package.json": "./package.json",
     "./style.css": "./dist/style.css"
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.cts",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -86,9 +96,13 @@
     "release": "bumpp",
     "prepublishOnly": "pnpm run build"
   },
-    "engines": {
-        "node": ">=24.12.0",
-    "vue": ">=3.5.00"
+  "onlyBuiltDependencies": [
+    "esbuild",
+    "vue-demi"
+  ],
+  "engines": {
+    "node": ">=22.0.0",
+    "vue": ">=3.5.0"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
@@ -124,14 +138,12 @@
     "js-cookie": "^3.0.8",
     "lodash-es": "^4.18.1",
     "lodash-unified": "^1.0.3",
+    "normalize-wheel-es": "^1.2.0",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",
     "screenfull": "^6.0.2",
     "sortablejs": "^1.15.7",
     "vue-i18n": "^11.4.6",
     "xlsx": "^0.18.5"
-  },
-  "inlinedDependencies": {
-    "@vue/reactivity": "3.5.39"
   }
 }

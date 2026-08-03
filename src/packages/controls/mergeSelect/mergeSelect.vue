@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { computed, ref, watch, onMounted, nextTick } from 'vue'
 import {
-  CheckboxGroupValueType,
   ElCheckbox,
   ElCheckboxButton,
   ElCheckboxGroup,
@@ -11,6 +10,7 @@ import {
   ElTreeSelect,
   ElSwitch,
 } from 'element-plus'
+import type { CheckboxGroupValueType } from 'element-plus'
 
 import { RwSelect } from '../select'
 import { RwSwitch } from '../switch'
