@@ -1,4 +1,4 @@
-import { type langInfoI } from "../../../dist/packages/locale"
+import { type langInfoI } from 'rw-vue-framework/locale'
 
 const lang:langInfoI ={
   "date": "日期",

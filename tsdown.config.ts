@@ -7,11 +7,12 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
-  platform: 'neutral',
+  platform: 'browser',
   exports: true,
   dts: { vue: true },
+
   plugins: [
-    vue(),
+    vue({isProduction:true}),
     url({
       // 让 Vite/Rollup 把 .png 当作 URL 字符串处理，而不是内联 base64
       include: /\.(png|jpg|jpeg|gif|svg|webp|ico)$/,
@@ -19,7 +20,8 @@ export default defineConfig({
       destDir: path.resolve(__dirname, 'dist/assets'),
     }),
   ],
-  format: ['esm', 'cjs'],
+  // 仅输出 ESM 格式
+  format: ['esm'],
   clean: true,
   shims: false,
   // 入口配置
@@ -34,14 +36,35 @@ export default defineConfig({
     "icons": "./src/packages/icons/index.ts",
     "pages": "./src/packages/pages/index.ts",
     "layout": "./src/packages/layout/index.ts",
+    "element-plus": "./src/element-plus.ts",
+    "pinia": "./src/pinia.ts",
+    "vue-i18n": "./src/vue-i18n.ts",
   },
-  // 去掉 chunk 的 hash
+  // 强制打包第三方库，使消费方无需自行安装这些包
+  deps: {
+    alwaysBundle: [
+      'element-plus',
+      '@element-plus/icons-vue',
+      'pinia',
+      'pinia-plugin-persistedstate',
+      'vue-i18n',
+    ],
+    // normalize-wheel-es 是 element-plus 内部 .d.ts 的类型依赖，
+    // 运行时不需要，保持 external 避免 MISSING_EXPORT 报错
+    neverBundle: ['normalize-wheel-es'],
+    // 关闭 onlyBundle 提示，保持当前打包行为（alwaysBundle 依赖及其子依赖全打包）
+    onlyBundle: false,
+  },
+  // 关闭插件耗时提示
+  inputOptions: {
+    checks: {
+      pluginTimings: false,
+    },
+  },
   rollupOptions: {
     output: {
       exports: 'named',
-      entryFileNames: '[name].[format].[ext]',
-      chunkFileNames: '[name].[format].[ext]',
-      assetFileNames: '[name].[ext]',
+      assetFileNames: 'assets/[name].[ext]',
     },
   },
 })

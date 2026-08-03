@@ -119,6 +119,14 @@ export const getDefaultData=(type:mysqlFieldTypeT)=>{
         defaultLength=53;
         defaultData=0;
         break;
+      case "date":
+        defaultLength=13;
+        defaultData=0;
+        break;
+        case "datetime":
+        defaultLength=22;
+        defaultData=0;
+        break;
       default:
         console.error("数据类型没有命中，请检查database.ts中的fieldC，增加mysql类型默认值")
         //默认为空

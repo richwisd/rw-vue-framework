@@ -3,7 +3,8 @@ import { computed, ref } from "vue";
 import {  type OptionT } from "./dropdown"
 import { RwButton } from "../button"
 import { ArrowDown, ArrowUp } from '@element-plus/icons-vue'
-import { ElDropdown, ElDropdownMenu, ElDropdownItem, DropdownInstance, ElCheckbox  } from 'element-plus'
+import { ElDropdown, ElDropdownMenu, ElDropdownItem, ElCheckbox  } from 'element-plus'
+import type { DropdownInstance } from 'element-plus'
 import { t } from "../../locale";
 // import { useLocalSettingStore } from '../../stores'
 

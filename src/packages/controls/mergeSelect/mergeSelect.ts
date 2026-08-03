@@ -1,7 +1,7 @@
 import { type baseT } from '../../constants'
 import { type SFCWithInstall, withInstall } from '../../utils'
 
-import { SelectProps, TreeInstance } from 'element-plus'
+import type { SelectProps, TreeInstance } from 'element-plus'
 
 import { RwSelect } from '../select'
 
