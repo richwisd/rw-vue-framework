@@ -1,149 +1,29 @@
 {
-  "name": "rw-vue-framework",
+  "name": "rw-vue-framework-monorepo",
+  "private": true,
   "type": "module",
-  "version": "1.0.24",
-  "description": "This is a rapid development framework based on Vue3 and Element Plus",
-  "author": "richwisd",
-  "license": "MIT",
-  "homepage": "https://www.richwisd.com",
-  "repository": {
-    "type": "git",
-    "url": "https://gitee.com/richwisd/rw-vue-framework.git"
-  },
-  "bugs": {
-    "url": "https://gitee.com/richwisd/rw-vue-framework/issues"
-  },
-  "keywords": [
-    "vue",
-    "vue3",
-    "framework",
-    "element-plus",
-    "element plus",
-    "richwisd",
-    "components",
-    "ui",
-    "library"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./constants": {
-      "types": "./dist/constants.d.ts",
-      "import": "./dist/constants.js"
-    },
-    "./controls": {
-      "types": "./dist/controls.d.ts",
-      "import": "./dist/controls.js"
-    },
-    "./element-plus": {
-      "types": "./dist/element-plus.d.ts",
-      "import": "./dist/element-plus.js"
-    },
-    "./hooks": {
-      "types": "./dist/hooks.d.ts",
-      "import": "./dist/hooks.js"
-    },
-    "./icons": {
-      "types": "./dist/icons.d.ts",
-      "import": "./dist/icons.js"
-    },
-    "./layout": {
-      "types": "./dist/layout.d.ts",
-      "import": "./dist/layout.js"
-    },
-    "./locale": {
-      "types": "./dist/locale.d.ts",
-      "import": "./dist/locale.js"
-    },
-    "./pages": {
-      "types": "./dist/pages.d.ts",
-      "import": "./dist/pages.js"
-    },
-    "./pinia": {
-      "types": "./dist/pinia.d.ts",
-      "import": "./dist/pinia.js"
-    },
-    "./stores": {
-      "types": "./dist/stores.d.ts",
-      "import": "./dist/stores.js"
-    },
-    "./utils": {
-      "types": "./dist/utils.d.ts",
-      "import": "./dist/utils.js"
-    },
-    "./vue-i18n": {
-      "types": "./dist/vue-i18n.d.ts",
-      "import": "./dist/vue-i18n.js"
-    },
-    "./package.json": "./package.json",
-    "./style.css": "./dist/style.css"
-  },
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch --sourcemap",
-    "play": "vite",
+    "build": "pnpm -r build",
+    "build:core": "pnpm --filter rw-vue-framework build",
+    "dev": "pnpm --filter rw-vue-framework dev",
+    "play": "pnpm --filter @rw-vue-framework/play dev",
+    "docs": "pnpm --filter @rw-vue-framework/docs dev",
     "test": "vitest",
-    "typecheck": "vue-tsc --noEmit",
-    "release": "bumpp",
-    "prepublishOnly": "pnpm run build"
-  },
-  "onlyBuiltDependencies": [
-    "esbuild",
-    "vue-demi"
-  ],
-  "engines": {
-    "node": ">=22.0.0",
-    "vue": ">=3.5.0"
-  },
-  "peerDependencies": {
-    "vue": "^3.0.0"
+    "typecheck": "pnpm --filter rw-vue-framework typecheck",
+    "release": "pnpm --filter rw-vue-framework release"
   },
   "devDependencies": {
-    "@rollup/plugin-url": "^8.0.2",
-    "@tsdown/css": "^0.22.3",
-    "@types/crypto-js": "^4.2.2",
-    "@types/js-cookie": "^3.0.6",
-    "@types/node": "^26.1.0",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitest/browser-playwright": "^4.1.9",
-    "bumpp": "^11.1.0",
+    "@types/node": "^26.1.0",
     "playwright": "^1.61.1",
-    "sass": "^1.101.0",
-    "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
     "vite": "^8.1.3",
     "vitest": "^4.1.9",
-    "vue": "^3.5.39",
-    "vue-tsc": "^3.3.6"
+    "vue": "^3.5.39"
   },
-  "dependencies": {
-    "@element-plus/icons-vue": "^2.3.2",
-    "@vue/shared": "^3.5.39",
-    "@vueuse/core": "^14.3.0",
-    "axios": "^1.18.1",
-    "crypto-js": "^4.2.0",
-    "dayjs": "^1.11.21",
-    "element-plus": "^2.14.2",
-    "file-saver": "^2.0.5",
-    "form-data": "^4.0.6",
-    "js-cookie": "^3.0.8",
-    "lodash-es": "^4.18.1",
-    "lodash-unified": "^1.0.3",
-    "normalize-wheel-es": "^1.2.0",
-    "pinia": "^3.0.4",
-    "pinia-plugin-persistedstate": "^4.7.1",
-    "screenfull": "^6.0.2",
-    "sortablejs": "^1.15.7",
-    "vue-i18n": "^11.4.6",
-    "xlsx": "^0.18.5"
-  }
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "packageManager": "pnpm@11.9.0"
 }

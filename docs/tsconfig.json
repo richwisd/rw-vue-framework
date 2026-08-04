@@ -16,8 +16,8 @@
       "DOM.Iterable"
     ],
     "paths": {
-      "rw-vue-framework": ["../"],
-      "rw-vue-framework/*": ["./*"]
+      "rw-vue-framework": ["../packages/core"],
+      "rw-vue-framework/*": ["../packages/core/*"]
     },
     "jsx": "preserve"
   },
