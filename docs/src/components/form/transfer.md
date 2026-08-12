@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Transfer 穿梭框
 ---
@@ -16,14 +16,14 @@ import { RwTransfer } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/transferDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/transferDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/transferDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/transferDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: InputTag 输入标签
 ---
@@ -16,14 +16,14 @@ import { RwInputTag } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/inputTagDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/inputTagDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/inputTagDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/inputTagDemo.vue{vue}
 
 ## API
 

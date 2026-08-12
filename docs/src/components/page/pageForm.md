@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: PageForm 页面表单
 ---
@@ -16,14 +16,14 @@ import { RwPageForm } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/pages/pageForm/test.vue'
+import Demo from '../../../../demos/src/pages/pages/pageForm/test.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/pages/pageForm/test.vue{vue}
+<<< ../../../../demos/src/pages/pages/pageForm/test.vue{vue}
 
 ## API
 

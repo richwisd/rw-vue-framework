@@ -1,4 +1,4 @@
-# 批量生成组件文档脚本
+﻿# 批量生成组件文档脚本
 # 定义组件映射表：组件名 → 分类、中文名、说明、demo文件名（无则$null）
 
 $components = @(
@@ -110,7 +110,7 @@ foreach ($comp in $components) {
     if ($demo) {
         if ($demo -like "../*") {
             # 页面级 demo
-            $demoPath = "../../../../playground/src/pages/$demo"
+            $demoPath = "../../../../demos/src/pages/$demo"
             $demoImport = @"
 <script setup>
 import Demo from '$demoPath'
@@ -119,7 +119,7 @@ import Demo from '$demoPath'
 <Demo />
 "@
         } else {
-            $demoPath = "../../../../playground/src/pages/controls/$demo"
+            $demoPath = "../../../../demos/src/pages/controls/$demo"
             $demoImport = @"
 <script setup>
 import Demo from '$demoPath'

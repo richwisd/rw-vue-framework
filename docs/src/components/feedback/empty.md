@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Empty 空状态
 ---
@@ -16,14 +16,14 @@ import { RwEmpty } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/emptyDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/emptyDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/emptyDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/emptyDemo.vue{vue}
 
 ## API
 

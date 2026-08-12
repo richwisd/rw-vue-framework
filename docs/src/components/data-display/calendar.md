@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Calendar 日历
 ---
@@ -16,14 +16,14 @@ import { RwCalendar } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/calendarDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/calendarDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/calendarDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/calendarDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Checkbox 多选框
 ---
@@ -16,14 +16,14 @@ import { RwCheckbox } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/checkboxDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/checkboxDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/checkboxDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/checkboxDemo.vue{vue}
 
 ## API
 

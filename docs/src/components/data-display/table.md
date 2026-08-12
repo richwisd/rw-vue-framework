@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Table 表格
 ---
@@ -16,14 +16,14 @@ import { RwTable } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/tableDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/tableDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/tableDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/tableDemo.vue{vue}
 
 ## API
 

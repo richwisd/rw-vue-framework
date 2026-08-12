@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Popconfirm 气泡确认框
 ---
@@ -16,14 +16,14 @@ import { RwPopconfirm } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/popconfirmDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/popconfirmDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/popconfirmDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/popconfirmDemo.vue{vue}
 
 ## API
 

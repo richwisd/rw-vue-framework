@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: MergeSelect 合并选择器
 ---
@@ -16,14 +16,14 @@ import { RwMergeSelect } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/mergeSelectDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/mergeSelectDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/mergeSelectDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/mergeSelectDemo.vue{vue}
 
 ## API
 

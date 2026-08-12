@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Badge 徽章
 ---
@@ -16,14 +16,14 @@ import { RwBadge } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/badgeDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/badgeDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/badgeDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/badgeDemo.vue{vue}
 
 ## API
 

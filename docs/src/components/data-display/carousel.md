@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Carousel 走马灯
 ---
@@ -16,14 +16,14 @@ import { RwCarousel } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/carouselDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/carouselDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/carouselDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/carouselDemo.vue{vue}
 
 ## API
 

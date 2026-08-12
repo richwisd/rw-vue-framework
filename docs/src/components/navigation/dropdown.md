@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Dropdown 下拉菜单
 ---
@@ -16,14 +16,14 @@ import { RwDropdown } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/dropdownDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/dropdownDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/dropdownDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/dropdownDemo.vue{vue}
 
 ## API
 

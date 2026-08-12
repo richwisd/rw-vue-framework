@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Select 选择器
 ---
@@ -16,14 +16,14 @@ import { RwSelect } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/selectDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/selectDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/selectDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/selectDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Backtop 回到顶部
 ---
@@ -16,14 +16,14 @@ import { RwBacktop } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/backtopDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/backtopDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/backtopDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/backtopDemo.vue{vue}
 
 ## API
 

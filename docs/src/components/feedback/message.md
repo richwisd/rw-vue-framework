@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Message 消息提示
 ---
@@ -16,14 +16,14 @@ import { RwMessage } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/messageDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/messageDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/messageDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/messageDemo.vue{vue}
 
 ## API
 

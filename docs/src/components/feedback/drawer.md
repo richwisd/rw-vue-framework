@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Drawer 抽屉
 ---
@@ -16,14 +16,14 @@ import { RwDrawer } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/drawerDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/drawerDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/drawerDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/drawerDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Text 文本
 ---
@@ -16,14 +16,14 @@ import { RwText } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/textDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/textDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/textDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/textDemo.vue{vue}
 
 ## API
 

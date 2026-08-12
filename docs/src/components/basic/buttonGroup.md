@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: ButtonGroup 按钮组
 ---
@@ -18,14 +18,14 @@ import { RwButtonGroup } from 'rw-vue-framework/controls'
 通过 `RwButtonGroup.init(moduleName, options)` 创建按钮组，再用 `addButton` / `addPopconfirm` / `addDropdown` 动态追加按钮。
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/buttonGroupDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/buttonGroupDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/buttonGroupDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/buttonGroupDemo.vue{vue}
 
 ## API
 

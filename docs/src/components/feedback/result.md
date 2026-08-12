@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Result 结果
 ---
@@ -16,14 +16,14 @@ import { RwResult } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/resultDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/resultDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/resultDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/resultDemo.vue{vue}
 
 ## API
 

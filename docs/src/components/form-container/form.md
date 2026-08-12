@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Form 表单
 ---
@@ -16,14 +16,14 @@ import { RwForm } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/formDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/formDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/formDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/formDemo.vue{vue}
 
 ## API
 

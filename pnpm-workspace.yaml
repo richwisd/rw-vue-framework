@@ -1,9 +1,12 @@
 packages:
-  - 'packages/*'
-  - 'playground'
+  - 'rw-vue-framework'
+  - 'demos'
   - 'docs'
-
 allowBuilds:
   '@parcel/watcher': true
   esbuild: true
   vue-demi: true
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - esbuild
+  - vue-demi

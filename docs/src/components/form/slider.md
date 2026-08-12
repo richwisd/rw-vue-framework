@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Slider 滑块
 ---
@@ -16,14 +16,14 @@ import { RwSlider } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/sliderDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/sliderDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/sliderDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/sliderDemo.vue{vue}
 
 ## API
 

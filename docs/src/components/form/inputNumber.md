@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: InputNumber 数字输入
 ---
@@ -16,14 +16,14 @@ import { RwInputNumber } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/inputNumberDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/inputNumberDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/inputNumberDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/inputNumberDemo.vue{vue}
 
 ## API
 

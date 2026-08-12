@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Affix 固钉
 ---
@@ -16,14 +16,14 @@ import { RwAffix } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/affixDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/affixDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/affixDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/affixDemo.vue{vue}
 
 ## API
 

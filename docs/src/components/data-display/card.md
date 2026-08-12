@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Card 卡片
 ---
@@ -16,14 +16,14 @@ import { RwCard } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/cardDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/cardDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/cardDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/cardDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Collapse 折叠面板
 ---
@@ -16,14 +16,14 @@ import { RwCollapse } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/collapseDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/collapseDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/collapseDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/collapseDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Steps 步骤条
 ---
@@ -16,14 +16,14 @@ import { RwSteps } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/stepsDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/stepsDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/stepsDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/stepsDemo.vue{vue}
 
 ## API
 

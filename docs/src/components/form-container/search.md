@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Search 搜索区
 ---
@@ -16,14 +16,14 @@ import { RwSearch } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/searchDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/searchDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/searchDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/searchDemo.vue{vue}
 
 ## API
 

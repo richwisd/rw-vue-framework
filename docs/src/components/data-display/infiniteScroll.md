@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: InfiniteScroll 无限滚动
 ---
@@ -16,14 +16,14 @@ import { RwInfiniteScroll } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/infiniteScrollDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/infiniteScrollDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/infiniteScrollDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/infiniteScrollDemo.vue{vue}
 
 ## API
 

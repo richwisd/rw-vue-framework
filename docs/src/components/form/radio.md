@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Radio 单选框
 ---
@@ -16,14 +16,14 @@ import { RwRadio } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/radioDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/radioDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/radioDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/radioDemo.vue{vue}
 
 ## API
 

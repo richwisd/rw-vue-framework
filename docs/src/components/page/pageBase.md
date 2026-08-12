@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: PageBase 页面基础
 ---
@@ -16,14 +16,14 @@ import { RwPageBase } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/pages/pageBase/index.vue'
+import Demo from '../../../../demos/src/pages/pages/pageBase/index.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/pages/pageBase/index.vue{vue}
+<<< ../../../../demos/src/pages/pages/pageBase/index.vue{vue}
 
 ## API
 

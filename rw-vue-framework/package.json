@@ -1,0 +1,127 @@
+{
+  "name": "rw-vue-framework",
+  "type": "module",
+  "version": "1.0.24",
+  "description": "This is a rapid development framework based on Vue3 and Element Plus",
+  "author": "richwisd",
+  "license": "MIT",
+  "homepage": "https://www.richwisd.com",
+  "repository": {
+    "type": "git",
+    "url": "https://gitee.com/richwisd/rw-vue-framework.git"
+  },
+  "bugs": {
+    "url": "https://gitee.com/richwisd/rw-vue-framework/issues"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "framework",
+    "element-plus",
+    "element plus",
+    "richwisd",
+    "components",
+    "ui",
+    "library"
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./constants": "./dist/constants.js",
+    "./controls": "./dist/controls.js",
+    "./element-plus": "./dist/element-plus.js",
+    "./hooks": "./dist/hooks.js",
+    "./icons": "./dist/icons.js",
+    "./layout": "./dist/layout.js",
+    "./locale": "./dist/locale.js",
+    "./pages": "./dist/pages.js",
+    "./pinia": "./dist/pinia.js",
+    "./stores": "./dist/stores.js",
+    "./utils": "./dist/utils.js",
+    "./vue-i18n": "./dist/vue-i18n.js",
+    "./package.json": "./package.json",
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch --sourcemap",
+    "typecheck": "vue-tsc --noEmit",
+    "release": "bumpp",
+    "prepublishOnly": "pnpm run build"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "vue": ">=3.5.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-url": "^8.0.2",
+    "@tsdown/css": "^0.22.14",
+    "@types/crypto-js": "^4.2.2",
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^26.2.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "bumpp": "^12.2.0",
+    "sass": "^1.102.0",
+    "tsdown": "^0.22.14",
+    "typescript": "~6.0.3",
+    "vue": "^3.5.41",
+    "vue-tsc": "^3.3.9"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
+    "@vue/shared": "^3.5.41",
+    "@vueuse/core": "^14.4.0",
+    "axios": "^1.19.0",
+    "crypto-js": "^4.2.0",
+    "dayjs": "^1.11.21",
+    "element-plus": "^2.14.4",
+    "file-saver": "^2.0.5",
+    "form-data": "^4.0.6",
+    "js-cookie": "^3.0.8",
+    "lodash-es": "^4.18.1",
+    "lodash-unified": "^1.0.3",
+    "normalize-wheel-es": "^1.2.0",
+    "pinia": "^4.0.2",
+    "pinia-plugin-persistedstate": "^4.7.1",
+    "screenfull": "^6.0.2",
+    "sortablejs": "^1.15.7",
+    "vue-i18n": "^11.4.8",
+    "xlsx": "^0.18.5"
+  },
+  "inlinedDependencies": {
+    "@ctrl/tinycolor": "4.2.0",
+    "@element-plus/icons-vue": "2.3.2",
+    "@floating-ui/core": "1.8.0",
+    "@floating-ui/dom": "1.8.0",
+    "@floating-ui/utils": "0.2.12",
+    "@intlify/core-base": "11.4.8",
+    "@intlify/message-compiler": "11.4.8",
+    "@intlify/shared": "11.4.8",
+    "@sxzz/popperjs-es": "2.11.8",
+    "@vue/devtools-api": "6.5.0",
+    "@vue/devtools-kit": "8.2.1",
+    "@vue/devtools-shared": "8.2.1",
+    "@vue/reactivity": "3.5.41",
+    "async-validator": "4.2.5",
+    "csstype": "3.2.3",
+    "element-plus": "2.14.4",
+    "hookable": "5.5.3",
+    "memoize-one": "6.0.0",
+    "nostics": "1.2.0",
+    "perfect-debounce": "2.1.0",
+    "pinia": "4.0.2",
+    "pinia-plugin-persistedstate": "4.7.1",
+    "vue-component-type-helpers": "3.3.9",
+    "vue-i18n": "11.4.8",
+    "vue-router": "5.2.0"
+  }
+}

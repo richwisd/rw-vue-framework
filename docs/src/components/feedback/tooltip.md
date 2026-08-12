@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Tooltip 文字提示
 ---
@@ -16,14 +16,14 @@ import { RwTooltip } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/tooltipDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/tooltipDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/tooltipDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/tooltipDemo.vue{vue}
 
 ## API
 

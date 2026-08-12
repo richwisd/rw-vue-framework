@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Popover 气泡卡片
 ---
@@ -16,14 +16,14 @@ import { RwPopover } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/popoverDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/popoverDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/popoverDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/popoverDemo.vue{vue}
 
 ## API
 

@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: MessageBox 弹框
 ---
@@ -16,14 +16,14 @@ import { RwMessageBox } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/messageBoxDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/messageBoxDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/messageBoxDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/messageBoxDemo.vue{vue}
 
 ## API
 

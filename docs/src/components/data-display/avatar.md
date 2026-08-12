@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Avatar 头像
 ---
@@ -16,14 +16,14 @@ import { RwAvatar } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/avatarDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/avatarDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/avatarDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/avatarDemo.vue{vue}
 
 ## API
 

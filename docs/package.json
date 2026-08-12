@@ -9,10 +9,10 @@
     "preview": "vitepress preview"
   },
   "devDependencies": {
-    "@tanstack/vue-query": "^5.92.9",
-    "js-cookie": "^3.0.5",
+    "@tanstack/vue-query": "^5.101.4",
+    "js-cookie": "^3.0.8",
     "rw-vue-framework": "workspace:*",
     "vitepress": "^1.6.4",
-    "vue": "^3.5.39"
+    "vue": "^3.5.41"
   }
 }

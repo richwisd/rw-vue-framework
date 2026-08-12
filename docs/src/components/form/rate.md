@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Rate 评分
 ---
@@ -16,14 +16,14 @@ import { RwRate } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/rateDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/rateDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/rateDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/rateDemo.vue{vue}
 
 ## API
 

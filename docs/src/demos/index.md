@@ -1,17 +1,17 @@
----
+﻿---
 outline: deep
 title: 页面示例
 ---
 
 <script setup>
-import PageTableDemo from '../../../playground/src/pages/pages/pageTable/index.vue'
-import PageFormDemo from '../../../playground/src/pages/pages/pageForm/test.vue'
-import PageBaseDemo from '../../../playground/src/pages/pages/pageBase/index.vue'
+import PageTableDemo from '../../../demos/src/pages/pages/pageTable/index.vue'
+import PageFormDemo from '../../../demos/src/pages/pages/pageForm/test.vue'
+import PageBaseDemo from '../../../demos/src/pages/pages/pageBase/index.vue'
 </script>
 
 # 页面示例
 
-本节展示 rw-vue-framework 在真实业务场景下的页面级用法。所有示例均直接引入 `playground` 目录中的源码，未额外制作 demo，所见即所用。
+本节展示 rw-vue-framework 在真实业务场景下的页面级用法。所有示例均直接引入 `demos` 目录中的源码，未额外制作 demo，所见即所用。
 
 ## 列表页面
 

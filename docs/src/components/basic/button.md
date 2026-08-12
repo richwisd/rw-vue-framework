@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Button 按钮
 ---
@@ -18,14 +18,14 @@ import { RwButton } from 'rw-vue-framework/controls'
 通过 `RwButton.init(moduleName, name, options)` 创建控件描述对象，再以 `<RwButton.Template :control="..." />` 渲染。
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/buttonDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/buttonDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/buttonDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/buttonDemo.vue{vue}
 
 ## API
 

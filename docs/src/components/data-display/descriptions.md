@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Descriptions 描述列表
 ---
@@ -16,14 +16,14 @@ import { RwDescriptions } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/descriptionsDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/descriptionsDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/descriptionsDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/descriptionsDemo.vue{vue}
 
 ## API
 

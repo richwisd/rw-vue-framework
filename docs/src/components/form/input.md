@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: Input 输入框
 ---
@@ -18,14 +18,14 @@ import { RwInput } from 'rw-vue-framework/controls'
 通过 `RwInput.init(moduleName, name, options)` 创建控件，设置 `type` 后自动启用对应校验规则。
 
 <script setup>
-import Demo from '../../../../playground/src/pages/controls/inputDemo.vue'
+import Demo from '../../../../demos/src/pages/controls/inputDemo.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/controls/inputDemo.vue{vue}
+<<< ../../../../demos/src/pages/controls/inputDemo.vue{vue}
 
 ## API
 

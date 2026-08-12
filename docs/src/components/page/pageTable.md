@@ -1,4 +1,4 @@
----
+﻿---
 outline: deep
 title: PageTable 页面表格
 ---
@@ -16,14 +16,14 @@ import { RwPageTable } from 'rw-vue-framework/controls'
 ## 基础用法
 
 <script setup>
-import Demo from '../../../../playground/src/pages/pages/pageTable/index.vue'
+import Demo from '../../../../demos/src/pages/pages/pageTable/index.vue'
 </script>
 
 <Demo />
 
 ## 源码
 
-<<< ../../../../playground/src/pages/pages/pageTable/index.vue{vue}
+<<< ../../../../demos/src/pages/pages/pageTable/index.vue{vue}
 
 ## API
 
