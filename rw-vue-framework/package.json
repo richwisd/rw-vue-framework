@@ -1,7 +1,7 @@
 {
   "name": "rw-vue-framework",
   "type": "module",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "This is a rapid development framework based on Vue3 and Element Plus",
   "author": "richwisd",
   "license": "MIT",
