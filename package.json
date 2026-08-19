@@ -10,7 +10,8 @@
     "docs": "pnpm --filter @rw-vue-framework/docs dev",
     "test": "vitest",
     "typecheck": "pnpm --filter rw-vue-framework typecheck",
-    "release": "pnpm --filter rw-vue-framework release"
+    "release": "pnpm --filter rw-vue-framework release",
+    "publish": "pnpm --filter rw-vue-framework publish"
   },
   "devDependencies": {
     "@types/node": "^26.2.0",
