@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
 import { type OptionT } from './tabs'
 import { ElTabs } from 'element-plus'
 import { RwTabPane } from '../tabPane'

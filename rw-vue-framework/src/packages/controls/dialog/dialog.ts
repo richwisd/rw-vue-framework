@@ -178,7 +178,7 @@ export function init(name: string,templateName:any, buttons?: RwButtonGroup.Opti
       closeDialog(dialogControl, done)
     },
     controlType: 'dialog',
-  }) as OptionT
+  } as Record<string, any>) as OptionT
 
   return dialogControl
 }

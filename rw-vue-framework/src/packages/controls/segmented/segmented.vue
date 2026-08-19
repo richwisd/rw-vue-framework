@@ -26,7 +26,7 @@ const { fieldValue } = useFormValue<OptionT>(
     <template v-if="$slots.default" #default="scope">
       <slot name="default" v-bind="scope"></slot>
     </template>
-    <template #default="scope" v-else-if="control?.default">
+    <template #default v-else-if="control?.default">
       <component :is="control.default" v-if="isComponent(control.default) && !isHTML(control.default)" />
       <div v-else-if="typeof control.default === 'string' && isHTML(control.default)" v-html="control.default"></div>
       <span v-else>{{ control.default }}</span>

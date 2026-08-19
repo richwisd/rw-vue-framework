@@ -518,7 +518,7 @@ const inDialog = computed(() => {
 })
 // showTopButtons 和 showBottomButtons 使用动态配置
 const showTopButtons = computed(() => {
-  if ((inDialog.value && dialogContext) || props.control?.buttons.verticalLocation === 'bottom') return false // 在dialog中隐藏form的按钮
+  if ((inDialog.value && dialogContext) || props.control?.buttons?.verticalLocation === 'bottom') return false // 在dialog中隐藏form的按钮
   return (
     props.control?.buttons &&
     currentPageConfig.value.buttons.verticalLocation !== 'bottom'
@@ -526,7 +526,7 @@ const showTopButtons = computed(() => {
 })
 
 const showBottomButtons = computed(() => {
-  if ((inDialog.value && dialogContext) || props.control?.buttons.verticalLocation === 'top') return false // 在dialog中隐藏form的按钮
+  if ((inDialog.value && dialogContext) || props.control?.buttons?.verticalLocation === 'top') return false // 在dialog中隐藏form的按钮
   return (
     props.control?.buttons &&
     currentPageConfig.value.buttons.verticalLocation !== 'top'

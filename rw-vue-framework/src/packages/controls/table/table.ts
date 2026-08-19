@@ -103,7 +103,7 @@ export type OptionT = baseT &
     lineButtons: RwButtonGroup.OptionT
     headerLineButtons: RwButtonGroup.OptionT
     allForm: boolean
-    changeForm?: (val:any, name:string, scope) => void
+    changeForm?: (val:any, name:string, scope: any) => void
 
     otherButtons: RwButtonGroup.OptionT
 
@@ -435,7 +435,7 @@ function getWidth(width: string | number | undefined) {
 
 
 export function getFormContent(columns: columns.OptionT[]){
-  const obj = {}
+  const obj: Record<string, string> = {}
   for(let i = 0; i < columns.length; i++){
     const item = columns[i]
     obj[item.name] = ''

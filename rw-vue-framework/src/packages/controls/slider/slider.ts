@@ -19,5 +19,5 @@ export function init ( moduleName: string,name: string,  options :Partial<Option
     moduleName:moduleName,
     name:name,
     ...options,
-  })
+  } as Record<string, any>) as Partial<OptionT>
 }

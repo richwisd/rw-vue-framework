@@ -1,4 +1,4 @@
-import { useDark, useToggle } from '@vueuse/core'
+import { useDark } from '@vueuse/core'
 import { ElMessage } from 'element-plus'
 import { defineStore } from 'pinia'
 import { type StateTree } from 'pinia';

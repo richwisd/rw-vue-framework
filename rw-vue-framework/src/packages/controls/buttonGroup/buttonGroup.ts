@@ -134,8 +134,8 @@ export function createComponent<T extends ControlTypeEnum>(
     return null
   }
 
-  // 修复：正确调用 init 函数
-  const config = ctrl.init(moduleName, name, options)
+  // 修复：正确调用 init 函数（options 为联合类型，init 签名各异，需断言为 any 统一调用）
+  const config = ctrl.init(moduleName, name, options as any)
 
   const controlConfig = {
     disabled: options.disabled ?? false,

@@ -1,16 +1,10 @@
-import { get, set } from 'lodash-unified'
-// 修复 type-fest Entries 类型导入问题
-// 在 type-fest 0.6.0 版本中没有导出 Entries 类型，所以我们自定义定义它
-type Entries<T> = {
-  [K in keyof T]: [K, T[K]]
-}[keyof T][]
+import { merge, isObject, isPlainObject } from 'lodash-unified'
 import type { Arrayable } from '.'
-import { merge, isObject, isPlainObject } from 'lodash-es'
 
 export const keysOf = <T extends object>(arr: T) =>
   Object.keys(arr) as Array<keyof T>
 export const entriesOf = <T extends object>(arr: T) =>
-  Object.entries(arr) as Entries<T>
+  Object.entries(arr) as Array<[keyof T, T[keyof T]]>
 
 // 修复 hasOwn 导入问题
 // Vue 3 不再直接导出 hasOwn，我们使用 Object.prototype.hasOwnProperty.call 替代
@@ -130,8 +124,8 @@ export const getProp = <T = any>(
 
 
 // 赋值嵌套数据
-export function assignmentData(initial, current) {
-  const result = {};
+export function assignmentData(initial: Record<string, any>, current: Record<string, any>): Record<string, any> {
+  const result: Record<string, any> = {};
 
   // 先处理 initialData 中的属性
   for (const key in initial) {
@@ -165,8 +159,8 @@ export function assignmentData(initial, current) {
 }
 
 // 赋值嵌套数据
-export function transDataToString(initial) {
-  const result = {};
+export function transDataToString(initial: Record<string, any>): Record<string, any> {
+  const result: Record<string, any> = {};
 
   // 先处理 initialData 中的属性
   for (const key in initial) {

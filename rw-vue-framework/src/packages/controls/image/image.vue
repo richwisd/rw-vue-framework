@@ -14,9 +14,9 @@ const imagePorps = computed(() => {
   const { placeholder, error, viewer, progress, toolbar, ...rest } = props.control
   return rest
 })
-const previewSrcList = computed(() => {
+const previewSrcList = computed<string[]>(() => {
   if (props.control.isPreview) {
-    return [props.control.src]
+    return props.control.src ? [props.control.src] : []
   }
   return props.control.previewSrcList ?? []
 })

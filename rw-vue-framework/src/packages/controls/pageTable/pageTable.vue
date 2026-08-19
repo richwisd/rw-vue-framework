@@ -61,14 +61,14 @@ const sentinelRef = ref<HTMLElement | null>(null)
 let scrollObserver: IntersectionObserver | null = null
 
 const hasMore = computed(() => {
-  if (!propsControl.pagination || !propsControl.table) return false
+  if (!propsControl.pagination || !propsControl.table?.data) return false
   if ((propsControl.pagination.total ?? 0) <= 0) return false
   return propsControl.table.data.length < (propsControl.pagination.total ?? 0)
 })
 
 /** 是否有可用的数据加载方式 */
 const canLoadData = computed(() => {
-  if (propsControl.table?.onLoad) return true
+  if (propsControl.table && typeof propsControl.table.onLoad === 'function') return true
   if (propsControl.struct?.apiURLFront) {
     // 有 HTTP 接口时，仅在数据为空时才允许加载（静态数据场景跳过）
     const hasStaticData = propsControl.table?.data && propsControl.table.data.length > 0
@@ -146,13 +146,11 @@ watch(isMobile, (val) => {
 })
 
 // 页面
-const pageRef = ref(null)
-
 // 表格
-const tableRef = ref(null)
+const tableRef = ref<any>(null)
 
 // 搜索
-const searchRef = ref(null)
+const searchRef = ref<any>(null)
 const searchRefTem = ref<InstanceType<typeof RwSearch.Template> | null>(null)
 const searchHeight = ref(0)
 
@@ -203,7 +201,7 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
     // 如果设置了 onLoad，直接使用自定义加载函数，跳过 HTTP 请求
     if (propsControl.table.onLoad) {
       try {
-        const searchList = propsControl?.search ? propsControl.search?.getSearchData(formItemData) : []
+        const searchList: any = propsControl?.search ? (propsControl.search?.getSearchData(formItemData) ?? []) : []
         let loadData = {
           queryPage: {
             page: propsControl.pagination?.page ?? 1,
@@ -220,9 +218,10 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
         }
         const result = await propsControl.table.onLoad(loadData)
         if (result) {
-          const newData = result.data || []
+          const newData: any[] = result.data || []
+          const currentData = propsControl.table.data ?? []
           propsControl.table.data = isLoadMore.value
-            ? [...propsControl.table.data, ...newData]
+            ? [...currentData, ...newData]
             : newData
           if (propsControl.pagination) {
             propsControl.pagination.total = result.total ?? 0
@@ -233,7 +232,7 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
       }
 
       if (propsControl.table?.loadLast) {
-        propsControl.table.data = propsControl.table.loadLast(propsControl.table.data)
+        propsControl.table.data = propsControl.table.loadLast(propsControl.table.data ?? []) as any[]
       }
 
       propsControl.table.loading = false
@@ -292,14 +291,14 @@ const getTableData = async (formItemData: any = searchRefTem.value?.formItemData
           const resultData = res.data
           const newData = resultData.rows || []
           propsControl.table.data = isLoadMore.value
-            ? [...propsControl.table.data, ...newData]
+            ? [...(propsControl.table.data ?? []), ...newData]
             : newData
           if (propsControl.pagination) {
             propsControl.pagination.total = resultData.total
           }
         }
         if (propsControl.table?.loadLast) {
-          propsControl.table.data = propsControl.table.loadLast(propsControl.table.data)
+          propsControl.table.data = propsControl.table.loadLast(propsControl.table.data ?? []) as any[]
         }
       }
     } catch (error) {
@@ -398,11 +397,11 @@ function handleClickLineButton(control: any, scope: any) {
     // console.log('control.name', control.name)
     switch (control.name) {
       case 'edit':
-        openDialog('editForm', scope.row[propsControl.struct.tableID])
+        openDialog('editForm', scope.row[propsControl.struct.tableID ?? 'id'])
         break
       case 'deleteLine':
         const ids: Array<number> = []
-        ids.push(scope.row[propsControl.struct.tableID])
+        ids.push(scope.row[propsControl.struct.tableID ?? 'id'])
         if (localSetting.pageTable.table.deleteConfirmStyle == 'modal') {
           ElMessageBox.confirm(
             t('messages.confirmDeleteCurrentLine'),
@@ -456,7 +455,7 @@ function clickButtons(event: any, command: any) {
         const ids: number[] = []
 
         propsControl.table.selectionRows.map((row:any) => {
-          const id = Number(row[propsControl.struct!.tableID])
+          const id = Number(row[propsControl.struct!.tableID ?? 'id'])
           if (!isNaN(id)) {
             ids.push(id)
           }
@@ -564,10 +563,10 @@ function clickButtons(event: any, command: any) {
       const dragState = JSON.parse(JSON.stringify(tableRef.value?.dragState))
       const rowData = dragState.currentRowOrder
 
-      const colData = dragState.currentColumnOrder.map((item, index) => {
+      const colData = dragState.currentColumnOrder.map((item: any, index: number) => {
         if (index <= 1 || index === dragState.originalColumnHeader.length - 1) return false
         return item.property
-      }).filter(item => item !== false)
+      }).filter((item: any) => item !== false)
 
       console.log('排序后：', rowData, colData)
       // columnSortChange(colData)
@@ -754,10 +753,6 @@ function rowSortChange() {
   console.log('rowSortChange')
 }
 
-function columnSortChange(arr: string[] = []) {
-  showColumns(arr)
-}
-
 defineExpose({
   refreshData
 })
@@ -765,7 +760,7 @@ defineExpose({
 </script>
 
 <template>
-  <RwPageBase.Template v-if="propsControl.page" :control="propsControl.page" @refresh-data="refreshData" ref="pageRef">
+  <RwPageBase.Template v-if="propsControl.page" :control="propsControl.page" @refresh-data="refreshData">
     <template #SlotTopRight>
       <slot name="SlotTopRight"></slot>
     </template>
@@ -823,11 +818,11 @@ defineExpose({
       </div>
       <div ref="sentinelRef" class="mobile-sentinel"></div>
       <div v-if="propsControl.table.loading" class="mobile-loading">加载中...</div>
-      <div v-else-if="!hasMore && propsControl.table.data.length > 0" class="mobile-no-more">没有更多了</div>
+      <div v-else-if="!hasMore && (propsControl.table.data?.length ?? 0) > 0" class="mobile-no-more">没有更多了</div>
     </div>
 
     <!-- 桌面端表格 -->
-    <RwTable.Template v-if="!isMobile && propsControl.table" :control="propsControl.table" :default-data="propsControl.table.data"
+    <RwTable.Template v-if="!isMobile && propsControl.table" :control="propsControl.table" :default-data="propsControl.table.data ?? []"
       :pageTable="propsControl" @selectionChange="handleSelectionChange" @clickLineButton="handleClickLineButton"
       @row-sort-change="rowSortChange" ref="tableRef" />
 

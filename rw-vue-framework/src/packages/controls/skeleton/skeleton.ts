@@ -6,13 +6,13 @@ export const Template: SFCWithInstall<typeof Skeleton> = withInstall(Skeleton)
 
 import type { SkeletonProps } from 'element-plus'
 
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = SkeletonProps & baseT & {
   moduleName: string
   name: string
-  default: any
-  template: any
+  default: RenderContentT
+  template: RenderContentT
   loading?: boolean
 }
 

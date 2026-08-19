@@ -1,12 +1,12 @@
 import { type SFCWithInstall, withInstall } from "../../utils"
-import { type baseT } from "../../constants"
+import { type baseT, type RenderContentT } from "../../constants"
 import Tooltip from './tooltip.vue'
 export const Template: SFCWithInstall<typeof Tooltip> = withInstall(Tooltip)
 import type { ElTooltipProps } from "element-plus"
 
 export type OptionT = ElTooltipProps & baseT & {
-  default: any,
-  content: any,
+  default: RenderContentT,
+  content: RenderContentT,
   moduleName: string,
   name: string,
 }

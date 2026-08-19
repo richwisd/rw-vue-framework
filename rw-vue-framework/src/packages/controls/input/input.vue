@@ -215,12 +215,6 @@ onUnmounted(() => {
 })
 
 // 多语言相关
-const confirm = () => {
-  dialogVisible.value = false
-  // 赋值
-  fieldValue.value = JSON.stringify(formLangs.value)
-}
-
 // 动态为每个语言创建独立的计算属性
 const langValues = computed(() => {
   const values: Record<string, any> = {}

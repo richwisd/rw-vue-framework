@@ -1,4 +1,4 @@
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import { type SFCWithInstall, withInstall } from '../../utils'
 
 import { type SelectProps, selectEmits } from 'element-plus'
@@ -27,10 +27,10 @@ export type OptionT  = SelectProps & SelectEmits & baseT & {
 
   isModel: boolean
   // 插槽
-  optionTemplate: any
-  tagTemplate: any
-  empty: any
-  prefix: any
+  optionTemplate: RenderContentT
+  tagTemplate: RenderContentT
+  empty: RenderContentT
+  prefix: RenderContentT
 }
 
 // 使用泛型函数

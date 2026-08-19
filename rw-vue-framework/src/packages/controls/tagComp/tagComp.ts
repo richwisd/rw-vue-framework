@@ -3,7 +3,7 @@ import { type baseT } from '../../constants'
 import TagComp from './tagComp.vue'
 export const Template: SFCWithInstall<typeof TagComp> = withInstall(TagComp)
 import type { TagProps, TagEmits } from 'element-plus'
-import { Component } from 'vue'
+import { type Component } from 'vue'
 
 export type optionValueI = TagProps &
   TagEmits & {

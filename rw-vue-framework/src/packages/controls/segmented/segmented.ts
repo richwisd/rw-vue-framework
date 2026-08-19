@@ -1,5 +1,5 @@
 import { type SFCWithInstall, withInstall } from "../../utils";
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 import Segmented from './segmented.vue'
 
@@ -8,7 +8,7 @@ export const Template: SFCWithInstall<typeof Segmented> = withInstall(Segmented)
 import type { SegmentedProps, SegmentedEmits } from "element-plus";
 
 export type OptionT = SegmentedProps & SegmentedEmits & baseT & {
-  default: any
+  default: RenderContentT
   moduleName: string
   name: string
 }

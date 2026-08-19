@@ -1,5 +1,5 @@
 import { type SFCWithInstall, withInstall } from "../../utils";
-import { type baseT } from "../../constants";
+import { type baseT, type RenderContentT } from "../../constants";
 import Popconfirm from './popconfirm.vue'
 export const Template: SFCWithInstall<typeof Popconfirm> = withInstall(Popconfirm)
 import type { PopconfirmProps, PopconfirmEmits } from "element-plus";
@@ -7,8 +7,8 @@ import { t } from "../../locale";
 import { RwButton } from '../button'
 
 export type OptionT = PopconfirmProps & PopconfirmEmits & baseT & {
-  reference: any
-  actions : any
+  reference: RenderContentT
+  actions : RenderContentT
 
   button: Partial<RwButton.OptionT>
   text:boolean

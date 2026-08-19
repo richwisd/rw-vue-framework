@@ -1,19 +1,16 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
 
-import { i18n } from '../../locale'
-const { t } = i18n.global
-
 import InputTag from './inputTag.vue'
 
 export const Template: SFCWithInstall<typeof InputTag> = withInstall(InputTag)
 
 import type { InputTagProps,InputTagEmits } from 'element-plus'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = InputTagProps & InputTagEmits & baseT & {
-  prefix: any
-  suffix: any
-  tag: any
+  prefix: RenderContentT
+  suffix: RenderContentT
+  tag: RenderContentT
 
   unique: boolean
 }

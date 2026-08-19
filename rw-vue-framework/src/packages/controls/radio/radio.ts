@@ -1,5 +1,5 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import Radio from './radio.vue'
 
 export const Template: SFCWithInstall<typeof Radio> = withInstall(Radio)
@@ -12,7 +12,7 @@ export interface RadioOption {
   border?: boolean
   size?: 'large' | 'default' | 'small'
   name?: string
-  icon?: any
+  icon?: RenderContentT
   description?: string
   [key: string]: any
 }
@@ -63,7 +63,7 @@ export type OptionT = baseT & RadioEventCallbacks & {
   gap?: number // 选项间距，单位 px
 
   // === 插槽内容 ===
-  default?: any // 默认插槽内容
+  default?: RenderContentT // 默认插槽内容
 }
 
 // 初始化函数

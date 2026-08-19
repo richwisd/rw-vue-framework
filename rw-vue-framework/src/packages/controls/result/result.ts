@@ -6,15 +6,15 @@ export const Template: SFCWithInstall<typeof Result> = withInstall(Result)
 
 import type { ResultProps } from 'element-plus'
 
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = ResultProps & baseT & {
   moduleName: string
   name: string
-  icon: any
-  title: any
-  subTitle: any
-  extra: any
+  icon: RenderContentT
+  title: RenderContentT
+  subTitle: RenderContentT
+  extra: RenderContentT
 }
 
 export function init( moduleName: string, name: string, options:Partial<OptionT>={}) :Partial<OptionT> {

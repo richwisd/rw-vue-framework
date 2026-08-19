@@ -40,8 +40,9 @@ export const isWindow = (val: unknown): val is Window => val === window
 
 /** 增加 */
 // 判断是否是HTML片段
-export const isHTML = (val: string): boolean => {
-  const reg = /^<[a-z]+(\s[^>]+)?>[\s\S]*<\/[a-z]+>$/
+export const isHTML = (val: unknown): boolean => {
+  if (typeof val !== 'string') return false
+  const reg = /^<[a-z]+(\s[^>]+)?>[\s\S]*<\/[a-z]+$/
   return reg.test(val)
 }
 

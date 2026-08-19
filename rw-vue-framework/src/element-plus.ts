@@ -7,5 +7,7 @@ export * from 'element-plus'
 // 显式 re-export default 导出为命名导出 ElementPlus（export * 不会转发 default）
 // 这样用户可以 `import { ElementPlus } from 'rw-vue-framework/element-plus'` 来获取插件对象
 export { default as ElementPlus } from 'element-plus'
+// 显式 re-export 与 element-plus 命名冲突的图标，element-plus 优先（解决 TS2308 歧义）
+export type { Filter, Message, Sort } from 'element-plus'
 // re-export 所有图标
 export * from '@element-plus/icons-vue'

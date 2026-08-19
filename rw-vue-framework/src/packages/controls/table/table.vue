@@ -13,7 +13,7 @@ import {
   useColumnsSettingStore,
 } from '../../stores'
 import { t } from '../../locale'
-import { onBeforeUnmount, onMounted, ref, watch, reactive, computed, nextTick } from 'vue'
+import { onBeforeUnmount, ref, watch, reactive, computed, nextTick } from 'vue'
 import { RwPageTable } from '../'
 import { useFormValue } from '../../hooks'
 import type { DragState } from './table'
@@ -91,7 +91,7 @@ function checkRow(row: any) {
 }
 
 // 更新表单数据
-const updateFormItem = (val, scope) => {
+const updateFormItem = (val: any, scope: any) => {
   scope.row[scope.column.property] = val
 
   // 这里可以加入changeForm
@@ -454,7 +454,7 @@ function initColumnDrop() {
 
       // 1.获取表格列
       const table = tableRef.value
-      if (table) {
+      if (table?.store?.states?.columns) {
         const oldColumns = table.store.states.columns
 
         // 2. 重新排列列的顺序
@@ -464,7 +464,7 @@ function initColumnDrop() {
         oldColumns.value = newColumns
       }
 
-      dragState.currentColumnOrder = [...table.store.states.columns.value]
+      dragState.currentColumnOrder = [...(table?.store?.states?.columns?.value ?? [])]
     },
   })
 }
@@ -488,15 +488,15 @@ const lineButtons = computed(() => {
   const num = localSetting.pageTable.table.maxButtons
   if(localSetting.pageTable.table.showMenu && num < props.control.lineButtons.controls.length){ // 显示更多按钮
     const { controls, ...propertys } = props.control.lineButtons
-    const buttons = { ...propertys, controls: [] }
+    const buttons = { ...propertys, controls: [] as any[] }
     const dropdown = {
       disabled: false,
       moduleName: propertys.moduleName,
       name: 'more',
       controlType:'dropdown',
       Template: markRaw(RwDropdown.Template),
-      config: RwDropdown.init(propertys.moduleName, 'more', { label:t('buttons.more'), text: controls[0].config.text  }),
-    }
+      config: RwDropdown.init(propertys.moduleName ?? '', 'more', { label:t('buttons.more'), text: controls[0]?.config.text ?? false  }),
+    } as any
     let accumulate = 0
     controls.map((item, index) => {
       if(!item.show || !item.config.show) accumulate++

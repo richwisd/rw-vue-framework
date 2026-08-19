@@ -6,12 +6,12 @@ export const Template: SFCWithInstall<typeof Progress> = withInstall(Progress)
 
 import type { ProgressProps } from 'element-plus'
 
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = ProgressProps & baseT & {
   moduleName: string
   name: string
-  default: any
+  default: RenderContentT
   percentage ?: number
 }
 

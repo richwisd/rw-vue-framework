@@ -6,7 +6,6 @@ import 'rw-vue-framework/style.css'
 import 'element-plus/dist/index.css'
 import 'element-plus/theme-chalk/dark/css-vars.css'
 import { i18n } from "./i18n"
-import { store } from "rw-vue-framework/stores"
 
 import App from './App.vue'
 import router from './router'
@@ -17,4 +16,4 @@ const config = {
   i18n,
 }
 
-createApp(App).use(RwVueFramework, config).use(store).use(router).mount('#app')
+createApp(App).use(RwVueFramework, config).use(router).mount('#app')

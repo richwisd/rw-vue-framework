@@ -1,4 +1,3 @@
-import { t } from '../../locale'
 import { type SFCWithInstall, withInstall } from '../../utils'
 import TabPane from './tabPane.vue'
 

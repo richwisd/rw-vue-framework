@@ -6,10 +6,10 @@ export const Template: SFCWithInstall<typeof Calendar> = withInstall(Calendar)
 
 import type { CalendarEmits, CalendarProps } from 'element-plus'
 
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = CalendarProps & CalendarEmits & baseT & {
-  dateCell:any
+  dateCell:RenderContentT
   header: string
   moduleName:string
   name: string

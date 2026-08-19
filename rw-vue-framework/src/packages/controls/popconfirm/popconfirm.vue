@@ -11,7 +11,7 @@ const props = defineProps<{ control: OptionT }>()
 const popconfrimProps = computed(() => {
   const { reference, actions, label, confirmButtonText, cancelButtonText, ...rest } = props.control
   return {...rest,
-    title: t('AreYouSure') + t(label) + t('Doubt'),
+    title: t('AreYouSure') + t(label ?? '') + t('Doubt'),
     confirmButtonText: confirmButtonText? t(confirmButtonText) : t('Yes'),
     cancelButtonText: cancelButtonText? t(cancelButtonText) : t('No'),
   }
@@ -23,7 +23,7 @@ const buttonProps = computed(() => {
     type: props.control.confirmButtonType,
     ...button,
     disabled,
-    label: t(label),
+    label: t(label ?? ''),
     text: props.control.text ?? button.text ?? false
    }
 })

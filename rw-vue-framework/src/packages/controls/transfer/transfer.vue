@@ -23,21 +23,21 @@ const fieldValue = defineModel<number[]>()
         <span>{{ control.default }}</span>
     </template>
 
-    <template #leftFooter v-if="control.leftFooter">
+    <template #left-footer v-if="control.leftFooter">
       <component :is="control.leftFooter" v-if="isComponent(control.leftFooter) && !isHTML(control.leftFooter)"/>
       <span>{{ control.leftFooter }}</span>
     </template>
 
-    <template #rightFooter v-if="control.rightFooter">
+    <template #right-footer v-if="control.rightFooter">
       <component :is="control.rightFooter" v-if="isComponent(control.rightFooter) && !isHTML(control.rightFooter)"/>
       <span>{{ control.rightFooter }}</span>
     </template>
 
-    <template #leftEmpty v-if="control.leftEmpty">
+    <template #left-empty v-if="control.leftEmpty">
       <component :is="control.leftEmpty" v-if="isComponent(control.leftEmpty) && !isHTML(control.leftEmpty)"/>
       <span>{{ control.leftEmpty }}</span>
     </template>
-    <template #rightEmpty v-if="control.rightEmpty">
+    <template #right-empty v-if="control.rightEmpty">
       <component :is="control.rightEmpty" v-if="isComponent(control.rightEmpty) && !isHTML(control.rightEmpty)"/>
       <span>{{ control.rightEmpty }}</span>
     </template>

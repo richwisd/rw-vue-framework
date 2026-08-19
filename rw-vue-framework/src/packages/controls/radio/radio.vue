@@ -14,6 +14,12 @@ import { type OptionT, type RadioOption } from './radio'
 
 defineOptions({ name: 'RwRadio' })
 
+// 显式声明插槽类型，避免 vue-tsc 推导出引用 vue-router / vue-i18n 等不可移植类型的虚拟变量
+defineSlots<{
+  default?(): any
+  option?(props: { option: RadioOption }): any
+}>()
+
 // 组件属性
 interface Props {
   control: OptionT
@@ -24,6 +30,9 @@ const props = defineProps<Props>()
   const emit = defineEmits(['update:modelValue'])
 // 表单值管理
 const { fieldValue } = useFormValue<OptionT>('RwRadio', props.control)
+
+// 默认插槽内容（显式标注 any 以避免 vue-tsc 推导出引用 vue-router/vue-i18n 的不可移植类型）
+const defaultSlotContent = computed<any>(() => props.control.label ?? props.control.default)
 
 // 响应式数据
 const optionsData = ref<RadioOption[]>([])
@@ -39,7 +48,7 @@ const isButtonMode = computed(() => props.control.mode === 'button')
 const isMultipleMode = computed(() => isGroupMode.value || isButtonMode.value)
 
 // 过滤掉自定义属性，只传递 Element Plus 支持的属性
-const radioProps = computed(() => {
+const radioProps = computed<Record<string, any>>(() => {
   const {
     // 过滤掉自定义属性
     mode,
@@ -128,7 +137,7 @@ const loadOptions = async (): Promise<void> => {
     const result = await http.post(url, params || {})
 
     if (result.status === 0 || result.data) {
-      optionsData.value = result.data?.[optionsKey] ?? result.data?.rows ?? result.data ?? []
+      optionsData.value = (optionsKey ? result.data?.[optionsKey] : undefined) ?? result.data?.rows ?? result.data ?? []
     } else {
       error.value = result.message || '加载数据失败'
       optionsData.value = []
@@ -204,7 +213,7 @@ defineExpose({
       @change="handleChange"
       @input="handleInput"
     >
-      <slot>{{ control.label || control.default }}</slot>
+      <slot>{{ defaultSlotContent }}</slot>
     </ElRadio>
 
     <!-- 多选模式 -->

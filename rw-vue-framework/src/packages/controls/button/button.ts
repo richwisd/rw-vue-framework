@@ -16,7 +16,6 @@ export type OptionT = Mutable<ButtonProps> & baseT &  {
   name: string,
   customized: boolean, // 是否是自定义的按钮,false表示是适配localSetting的
   suffixIcon: RenderContentT, // 后缀图标
-  tag: RenderContentT
   // 组内分割线
   separator: boolean, // 竖线
 

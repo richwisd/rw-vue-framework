@@ -5,14 +5,14 @@ import Switch from './switch.vue'
 export const Template: SFCWithInstall<typeof Switch> = withInstall(Switch)
 
 import type { SwitchProps, SwitchEmits } from 'element-plus'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import { reactive } from 'vue'
 
 export type OptionT = SwitchProps & SwitchEmits & baseT & {
   moduleName:string
   name:string
-  activeAction: any
-  inactiveAction: any
+  activeAction: RenderContentT
+  inactiveAction: RenderContentT
   loading?: boolean
   changeData?: (control: OptionT, val: any) => void
 }

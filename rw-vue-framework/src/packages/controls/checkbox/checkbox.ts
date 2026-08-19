@@ -1,5 +1,5 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import type {
   CheckboxProps,
   CheckboxGroupProps,
@@ -24,15 +24,15 @@ export type CheckboxOption = {
   checked?: boolean
   indeterminate?: boolean
   id?: string
-  icon?: any
+  icon?: RenderContentT
   description?: string
   [key: string]: any
 }
 
 // 事件回调类型
 export type CheckboxEventCallbacks = {
-  onChange?: (val) => void
-  onInput?: (val) => void
+  onChange?: (val: CheckboxValueType | CheckboxValueType[]) => void
+  onInput?: (val: CheckboxValueType | CheckboxValueType[]) => void
 }
 
 // 组件配置类型 - 简化类型定义，避免联合类型复杂性
@@ -68,7 +68,7 @@ export type OptionT = baseT &
     checkAllText?: string // 全选按钮文本
 
     // === 插槽内容 ===
-    default?: any // 默认插槽内容
+    default?: RenderContentT // 默认插槽内容
   }
 
 // 初始化函数

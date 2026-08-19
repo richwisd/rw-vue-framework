@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import {  type OptionT } from './text'
 import { ElText, ElTooltip } from 'element-plus'
-import { isComponent, isHTML } from '../../utils'
+import { isHTML } from '../../utils'
 import { computed } from 'vue'
 import { useFormValue } from '../../hooks'
-import { t, locale, localeOptions } from '../../locale'
+import { locale, localeOptions } from '../../locale'
 import { useLocalSettingStore } from '../../stores'
 import { storeToRefs } from 'pinia'
 

@@ -5,12 +5,12 @@ import Transfer from './transfer.vue'
 export const Template: SFCWithInstall<typeof Transfer> = withInstall(Transfer)
 
 import type { TransferProps,TransferEmits } from 'element-plus'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type OptionT = TransferProps & TransferEmits & baseT & {
   moduleName: string
   name: string
-  default:any
+  default: RenderContentT
   leftFooter:string
   rightFooter:string
   leftEmpty:string

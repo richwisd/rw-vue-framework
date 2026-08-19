@@ -1,5 +1,5 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import type { TreeInstance, TreeNodeData } from 'element-plus'
 import Tree from './tree.vue'
 
@@ -102,8 +102,8 @@ export interface OptionT extends baseT, TreeEventCallbacks {
   renderContent?: (h: any) => any // 树节点的内容区的渲染 Function
 
   // 插槽内容
-  empty?: any // 空状态插槽内容
-  default?: any // 默认节点内容插槽
+  empty?: RenderContentT // 空状态插槽内容
+  default?: RenderContentT // 默认节点内容插槽
 }
 
 // 初始化函数

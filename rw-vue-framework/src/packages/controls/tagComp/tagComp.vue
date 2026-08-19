@@ -2,16 +2,14 @@
 import {  type OptionT } from './tagComp'
 import { t } from '../../locale'
 import { ElAutocomplete } from 'element-plus'
-import { computed, ref, nextTick, watch } from 'vue'
+import { computed, ref, nextTick } from 'vue'
 import { RwButton } from '../button'
 import { RwTag } from '../tag'
 
 import { useFormValue } from "../../hooks";
-import { useLocalSettingStore } from '../../stores'
 import { http } from '../../utils'
 // import { useParamListStore } from '@/stores/paramlist'
 // const paramList=useParamListStore()
-const localSetting = useLocalSettingStore()
 
 const props = defineProps<{ control: OptionT, modelValue?: any  }>()
 const emit = defineEmits(['update:modelValue'])
@@ -73,7 +71,7 @@ const valueKeys = computed({
 })
 
 const addButton = computed(() => {
-  return RwButton.init(props.control.moduleName, 'addButton', {
+  return RwButton.init(props.control.moduleName ?? '', 'addButton', {
     label: props.control.buttonLabel,
     icon: props.control.buttonIcon,
   })

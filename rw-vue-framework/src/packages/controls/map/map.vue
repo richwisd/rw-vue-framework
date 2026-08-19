@@ -31,7 +31,6 @@ const dialogShow = ref(false)
 const map = ref<any>(null)
 
 /* 搜索 */
-const inputT = ref(null as any)
 const searchMap = ref(null as any)
 const searchText = ref<string | number>('')
 const searchRes = ref([])
@@ -237,7 +236,6 @@ function handleClickOutside(event: any) {
       <el-col :span="24">
         <el-input
           style="width: 100%; margin-bottom: 2px"
-          ref="inputT"
           id="inputV"
           v-model="searchText"
           clearable

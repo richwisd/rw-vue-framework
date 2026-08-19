@@ -43,20 +43,19 @@ const currentValue = computed({
 })
 
 // 处理添加标签事件，防止重复和空标签
-const handleAddTag = (tag: string) => {
-  // 检查标签是否为空或只包含空格
-  if (!tag || tag.trim() === '') {
-    // 如果标签为空或只包含空格，则不添加
-    return
-  }
+const handleAddTag = (tag: string | string[]) => {
+  // 统一转为数组处理
+  const tagArr = Array.isArray(tag) ? tag : [tag]
+  // 过滤空标签
+  const validTags = tagArr.filter((t) => t && t.trim() !== '')
+  if (validTags.length === 0) return
 
   if (props.control.unique) {
-    // 检查标签是否已存在
+    // 检查标签是否已存在，只添加不存在的标签
     const currentTags = currentValue.value
-    if (!currentTags.includes(tag)) {
-      // 只有当标签不存在时才添加
-      const newTags = [...currentTags, tag]
-      currentValue.value = newTags
+    const newTags = validTags.filter((t) => !currentTags.includes(t))
+    if (newTags.length > 0) {
+      currentValue.value = [...currentTags, ...newTags]
     }
   }
 

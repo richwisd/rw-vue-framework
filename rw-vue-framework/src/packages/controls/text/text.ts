@@ -1,11 +1,11 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import Text from './text.vue'
 export const Template: SFCWithInstall<typeof Text> = withInstall(Text)
 import type { TextProps } from 'element-plus'
 
 export type OptionT = TextProps & baseT & {
-  default: any
+  default: RenderContentT
 
   multiLang?: boolean  // 在表格中会用到
   lang?: string // 显示哪些语言

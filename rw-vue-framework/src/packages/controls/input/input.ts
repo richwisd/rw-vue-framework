@@ -5,7 +5,7 @@ import Input from './input.vue'
 export const Template: SFCWithInstall<typeof Input> = withInstall(Input)
 
 import type { InputProps, InputEmits } from 'element-plus'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 
 export type checkT = 'email'|'number'|'idcard'|'mobile'|'url'|'tel'|'password'|'username'|'text'
 
@@ -20,10 +20,10 @@ export type InputInstance = {
 
 // 使用更具体的函数类型定义
 export type OptionT = InputProps & InputEmits & baseT &  {
-  prefix: any
-  suffix: any
-  prepend: any
-  append: any
+  prefix: RenderContentT
+  suffix: RenderContentT
+  prepend: RenderContentT
+  append: RenderContentT
   check: checkT
   customPlaceholder: boolean
   instance: InputInstance | null
@@ -40,7 +40,7 @@ export type OptionT = InputProps & InputEmits & baseT &  {
 export function init(moduleName: string, name: string, options?: Partial<OptionT>): OptionT {
   /* 处理复杂的默认值 */
   // 处理多语言，placeholder
-  let instance: InputInstance = null
+  let instance: InputInstance | null = null
 
   return {
     moduleName,

@@ -12,7 +12,7 @@ import { RwTabs } from '../tabs'
 import { RwFormItems } from '../formItems'
 import type { FormItemRule, FormRules } from "element-plus"
 import { Select, RefreshLeft, CloseBold, Bottom } from '@element-plus/icons-vue'
-import { isReactive, markRaw, reactive, ref } from 'vue'
+import { isReactive, markRaw, reactive } from 'vue'
 
 
 

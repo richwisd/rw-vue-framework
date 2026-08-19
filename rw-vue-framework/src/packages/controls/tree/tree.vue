@@ -111,7 +111,7 @@ const getNodeLabel = (node: any): string => {
 }
 
 const isCheckable = computed(
-  () => props.control.showCheckbox || props.control['show-checkbox'] || false,
+  () => props.control.showCheckbox || false,
 )
 
 const isMultiple = computed(
@@ -218,7 +218,7 @@ const loadOptions = async (): Promise<void> => {
 
     if (result.status === 0 || result.data) {
       optionsData.value =
-        result.data?.[optionsKey] ?? result.data?.rows ?? result.data ?? []
+        (optionsKey ? result.data?.[optionsKey] : undefined) ?? result.data?.rows ?? result.data ?? []
 
       // 如果有初始选中值，设置选中状态
       if (fieldValue.value !== undefined && fieldValue.value !== null) {

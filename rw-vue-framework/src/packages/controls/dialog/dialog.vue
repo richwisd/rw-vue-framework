@@ -234,7 +234,7 @@ onUnmounted(() => {
     </template>
     <template #default v-else-if="control?.default">
       <component
-        :is="markRaw(control.default)"
+        :is="control.default"
         v-if="isComponent(control.default) && !isHTML(control.default)"
         ref="formRef"
         :in-dialog="true"

@@ -40,7 +40,6 @@ const dialogImageUrl = ref<string>('')
 
 // 计算属性
 const isImageType = computed(() => props.fileType === 'image')
-const isFileType = computed(() => props.fileType === 'file')
 
 const canSelectMore = computed(() => {
   return selectedFile.value.length < props.limit

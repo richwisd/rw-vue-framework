@@ -1,11 +1,11 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import Tag from './tag.vue'
 export const Template: SFCWithInstall<typeof Tag> = withInstall(Tag)
 import type { TagProps, TagEmits } from 'element-plus'
 
 export type OptionT = TagProps & TagEmits & baseT & {
-  default: any
+  default: RenderContentT
 }
 
 export function init(moduleName: string, name: string, options: Partial<OptionT> = {}): Partial<OptionT> {

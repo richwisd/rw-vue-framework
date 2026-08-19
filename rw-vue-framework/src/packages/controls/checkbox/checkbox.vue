@@ -15,6 +15,12 @@ import { type OptionT, type CheckboxOption } from './checkbox'
 import { t } from '../../locale'
 defineOptions({ name: 'RwCheckbox' })
 
+// 显式声明插槽类型，避免 vue-tsc 推导出引用 vue-router / vue-i18n 等不可移植类型的虚拟变量
+defineSlots<{
+  default?(): any
+  option?(props: { option: CheckboxOption }): any
+}>()
+
 // 组件属性
 type Props = {
   control: OptionT
@@ -25,6 +31,9 @@ const props = defineProps<Props>()
 const emit = defineEmits(['update:modelValue'])
 // 表单值管理
 const { fieldValue } = useFormValue<OptionT>('RwCheckbox', props.control)
+
+// 默认插槽内容（显式标注 any 以避免 vue-tsc 推导出引用 vue-router/vue-i18n 的不可移植类型）
+const defaultSlotContent = computed<any>(() => props.control.label ?? props.control.default)
 
 // 响应式数据
 const optionsData = ref<CheckboxOption[]>([])
@@ -41,7 +50,7 @@ const isDefaultType = computed(
 const isButtonType = computed(() => props.control.checkBoxType === 'button')
 
 // 过滤掉自定义属性，只传递 Element Plus 支持的属性
-const checkboxProps = computed(() => {
+const checkboxProps = computed<Record<string, any>>(() => {
   const {
     // 过滤掉自定义属性
     multiple,
@@ -201,7 +210,7 @@ const handleChange = (value: CheckboxValueType | CheckboxValueType[]): void => {
 }
 
 // 全选/取消全选
-const handleCheckAllChange = (checked: boolean): void => {
+const handleCheckAllChange = (checked: CheckboxValueType): void => {
   if (!isMultipleMode.value) return
 
   const enabledOptions = processedOptions.value.filter(
@@ -302,7 +311,7 @@ defineExpose({
       v-bind="checkboxProps"
       @change="handleChange"
     >
-      <slot>{{ control.label || control.default }}</slot>
+      <slot>{{ defaultSlotContent }}</slot>
     </ElCheckbox>
 
     <!-- 多选模式 -->

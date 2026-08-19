@@ -87,9 +87,6 @@ const handleDeleteFile = (index: number): void => {
 // 计算属性
 const isImageType = computed(() => props.fileType === 'image')
 const isVideoType = computed(() => props.fileType === 'video')
-const isFileType = computed(
-  () => props.fileType === 'file' || props.fileType === 'music',
-)
 
 // 工具函数
 const getFileExtension = (fileName?: string): string => {

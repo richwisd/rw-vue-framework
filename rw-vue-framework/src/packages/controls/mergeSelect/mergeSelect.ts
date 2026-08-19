@@ -1,4 +1,4 @@
-import { type baseT } from '../../constants'
+import { type baseT, type RenderContentT } from '../../constants'
 import { type SFCWithInstall, withInstall } from '../../utils'
 
 import type { SelectProps, TreeInstance } from 'element-plus'
@@ -23,8 +23,8 @@ export type OptionT = (treeSelectT | RwSelect.OptionT) & {
   nodeKey: string
   remoteParamKey: string
   showCheckAll: boolean
-  optionTemplate: any
-  tagTemplate: any
+  optionTemplate: RenderContentT
+  tagTemplate: RenderContentT
   labelShow: boolean
 
   isModel:boolean

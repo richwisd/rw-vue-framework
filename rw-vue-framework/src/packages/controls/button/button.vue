@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed, markRaw } from "vue";
+import { computed } from "vue";
 import { type OptionT } from "./button"
 import { ElButton, ElDivider } from 'element-plus'
 import { isComponent, isHTML } from '../../utils/'
@@ -50,7 +50,7 @@ function onClick(evt: any){
   </template>
   <!-- 其次使用control.default配置 -->
   <template v-else-if="control.default" #default>
-    <component :is="markRaw(control.default)" v-if="isComponent(control.default) && !isHTML(control.default)" />
+    <component :is="control.default" v-if="isComponent(control.default) && !isHTML(control.default)" />
     <div v-else-if="typeof control.default === 'string' && isHTML(control.default)" v-html="control.default"></div>
     <span v-else>{{ control.default }}</span>
   </template>
@@ -64,7 +64,7 @@ function onClick(evt: any){
     {{ label }}
     <!-- 后缀图标 -->
     <ElIcon v-if="control.suffixIcon" class="el-icon--right">
-      <component :is="markRaw(control.suffixIcon)" />
+      <component :is="control.suffixIcon" />
     </ElIcon>
   </template>
 
@@ -73,7 +73,7 @@ function onClick(evt: any){
     <slot name="loading"></slot>
   </template>
   <template v-else-if="control.loadingSlot" #loading>
-    <component :is="markRaw(control.loadingSlot)" v-if="isComponent(control.loadingSlot) && !isHTML(control.loadingSlot)" />
+    <component :is="control.loadingSlot" v-if="isComponent(control.loadingSlot) && !isHTML(control.loadingSlot)" />
     <div v-else-if="typeof control.loadingSlot === 'string' && isHTML(control.loadingSlot)" v-html="control.loadingSlot"></div>
     <span v-else>{{ control.loadingSlot }}</span>
   </template>
@@ -83,7 +83,7 @@ function onClick(evt: any){
     <slot name="icon"></slot>
   </template>
   <template v-else-if="control.iconSlot" #icon>
-    <component :is="markRaw(control.iconSlot)" v-if="isComponent(control.iconSlot) && !isHTML(control.iconSlot)" />
+    <component :is="control.iconSlot" v-if="isComponent(control.iconSlot) && !isHTML(control.iconSlot)" />
     <div v-else-if="typeof control.iconSlot === 'string' && isHTML(control.iconSlot)" v-html="control.iconSlot"></div>
     <span v-else>{{ control.iconSlot }}</span>
   </template>

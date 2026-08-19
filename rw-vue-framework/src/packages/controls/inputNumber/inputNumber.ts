@@ -1,8 +1,5 @@
 import { type SFCWithInstall, withInstall } from '../../utils'
-import { type baseT } from '../../constants'
-
-import { i18n } from '../../locale'
-const { t } = i18n.global
+import { type baseT, type RenderContentT } from '../../constants'
 
 import InputNumber from './inputNumber.vue'
 
@@ -11,10 +8,10 @@ export const Template: SFCWithInstall<typeof InputNumber> = withInstall(InputNum
 import type { InputNumberProps, InputNumberEmits } from 'element-plus'
 
 export type OptionT = InputNumberProps & InputNumberEmits & baseT & {
-  decreaseIcon: any
-  increaseIcon: any
-  prefix: any
-  suffix: any
+  decreaseIcon: RenderContentT
+  increaseIcon: RenderContentT
+  prefix: RenderContentT
+  suffix: RenderContentT
 }
 
 export function init(moduleName:string, name: string, options: Partial<OptionT> = {}): Partial<OptionT> {

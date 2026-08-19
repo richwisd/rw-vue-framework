@@ -8,7 +8,6 @@ import {
   ElRadioButton,
   ElRadioGroup,
   ElTreeSelect,
-  ElSwitch,
 } from 'element-plus'
 import type { CheckboxGroupValueType } from 'element-plus'
 
@@ -273,7 +272,7 @@ const blurMethod = () => {
   }
 }
 
-const showTrans = (item, value) => {
+const showTrans = (item: any, value: any) => {
   if (!props.control.showOpsTemplate || !item.template) {
     return false;
   }

@@ -29,7 +29,7 @@ const clickButtons = (event: RwButtonGroup.OptionT, command: RwButtonGroup.Optio
 }
 
 watch(()=>props.control.mTablePage.table.clickRow,(newValue)=>{
-  props.control.tablePage.struct.mTableIDValue = newValue[props.control.mTablePage.struct.mTableID] as string
+  props.control.tablePage.struct.mTableIDValue = newValue[props.control.mTablePage.struct.mTableID ?? 'id'] as string
 })
 
 </script>

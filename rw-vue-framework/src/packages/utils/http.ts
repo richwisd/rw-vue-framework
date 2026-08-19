@@ -484,7 +484,7 @@ export class Http {
     if (domain) {
       return Http.getDomainInstance(domain).get<T>(url, params, config);
     }
-    return this.axiosInstance.get(url, { params, ...config });
+    return this.axiosInstance.get(url, { params, ...config }) as unknown as Promise<T>;
   }
   /**
    * POST 请求
@@ -502,7 +502,7 @@ export class Http {
     if (domain) {
       return Http.getDomainInstance(domain).post<T>(url, data, config);
     }
-    return this.axiosInstance.post(url, data, config);
+    return this.axiosInstance.post(url, data, config) as unknown as Promise<T>;
   }
   /**
    * PUT 请求
@@ -520,7 +520,7 @@ export class Http {
     if (domain) {
       return Http.getDomainInstance(domain).put<T>(url, data, config);
     }
-    return this.axiosInstance.put(url, data, config);
+    return this.axiosInstance.put(url, data, config) as unknown as Promise<T>;
   }
   /**
    * DELETE 请求
@@ -536,7 +536,7 @@ export class Http {
     if (domain) {
       return Http.getDomainInstance(domain).delete<T>(url, config);
     }
-    return this.axiosInstance.delete(url, config);
+    return this.axiosInstance.delete(url, config) as unknown as Promise<T>;
   }
 
   /**
@@ -584,7 +584,7 @@ export class Http {
         uploadConfig,
       );
     }
-    return this.axiosInstance.post(url, formData, uploadConfig);
+    return this.axiosInstance.post(url, formData, uploadConfig) as unknown as Promise<T>;
   }
   /**
    * 文件下载请求

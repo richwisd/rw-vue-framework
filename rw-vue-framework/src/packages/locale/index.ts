@@ -1,5 +1,5 @@
 import { reactive,  watch } from 'vue'
-import { createI18n,type I18n, useI18n, type Composer } from 'vue-i18n'
+import { createI18n,type I18n } from 'vue-i18n'
 import Cookies from "js-cookie"
 
 /** 语言包结构 */
